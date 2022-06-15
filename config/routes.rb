@@ -1,3 +1,49 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
+  namespace :public do
+    get 'customers/show'
+    get 'customers/quit'
+    get 'customers/edit'
+  end
+  namespace :public do
+    get 'orders/index'
+    get 'orders/show'
+    get 'orders/new'
+    get 'orders/log'
+    get 'orders/thanks'
+  end
+  namespace :public do
+    get 'cart_items/index'
+  end
+  namespace :public do
+    get 'items/top'
+    get 'items/about'
+    get 'items/index'
+    get 'items/show'
+  end
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+  end
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/edit'
+  end
+  namespace :admin do
+    get 'items/index'
+    get 'items/new'
+    get 'items/show'
+    get 'items/edit'
+  end
+  devise_for :admins
+  devise_for :customers
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
