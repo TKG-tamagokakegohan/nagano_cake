@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-　#　adminとcustomerでそれぞれログイン後の画面指定
+
   def after_sign_in_path_for(resource)
    case resource
    when Admin
