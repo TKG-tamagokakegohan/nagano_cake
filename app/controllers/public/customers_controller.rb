@@ -4,7 +4,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def quit
+  end
+
+  def out
     @customer = Customer.find(params[:id])
+    #@customer = current_custoomer
     #is_activeカラムにフラグを立てる(defaultはtrue)
     @customer.update(is_active: false)
     #ログアウトさせる

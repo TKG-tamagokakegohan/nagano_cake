@@ -12,8 +12,8 @@ class Public::SessionsController < Devise::SessionsController
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
     #return if!@customer
     if @customer
-     #取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別 && メソッドがtrueであるかどうかを確認
-     if (@customer.valid_password?(params[:customer][:password])) && (@customer.active_for_authentication? == true)
+     #取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別 && メソッドがfalseであるかどうかを確認
+     if @customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true)
       flash[:error] = "退会済みです。"
       redirect_to new_customer_session_path
      end

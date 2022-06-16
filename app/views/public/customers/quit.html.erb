@@ -1,12 +1,8 @@
-<%= flash[:error] %>
 <h2>本当に退会しますか？</h2>
 
-<p>退会すると、会員登録情報や<br></p>
-<p>これまでの購入履歴が閲覧できなくなります。<br></p>
-<p>退会する場合は、「退会する」をクリックしてください。</p>
+<p>退会すると、会員登録情報や<br>
+これまでの購入履歴が閲覧できなくなります。<br>
+退会する場合は、「退会する」をクリックしてください。</p>
 
-<%= link_to "退会しない",%>
-<%# ユーザーがログインしていて且つログインユーザーであれば退会ボタンを表示%>
-<% if customer_signed_in? && @customer.id == current_customer.id %>
- <%= link_to "退会する", root_path %>
-<% end %>
+<%= link_to "退会しない", customer_path %>
+<%= link_to "退会する", out_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
