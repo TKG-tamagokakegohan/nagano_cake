@@ -1,5 +1,15 @@
 <h2>会員情報編集</h2>
 
+<%# バリデーションエラーメッセージ%>
+<% if @customer.errors.any? %>
+ <%= @customer.errors.count %>件のエラーが発生しました
+ <ul>
+   <% @customer.errors.full_messages.each do |message| %>
+   <li><%= message %></li>
+   <% end %>
+ </ul>
+<% end %>
+
 <%= form_with model:@customer do |f| %>
   <%# viewspublic/registrations/new.html.erb から貼り付け %>
   <div class = "field">
