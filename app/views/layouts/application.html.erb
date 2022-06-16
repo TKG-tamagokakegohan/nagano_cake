@@ -9,7 +9,11 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+  <% if admin_signed_in? %>
+    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "ログイン",  new_admin_session_path %>
+  <% end %>
   <body>
     <%= yield %>
   </body>
