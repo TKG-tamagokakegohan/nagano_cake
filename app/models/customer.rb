@@ -6,4 +6,10 @@ class Customer < ApplicationRecord
 
   #配送先
   belongs_to :customer
+  #ログインする時に退会済み(is_active==false)のユーザーを弾くためのメソッド
+  def active_for_authentication?
+    #customerのis_activeがtrueならfalseを返すようにしている
+    super && (self.is_active == true)
+  end
+
 end
