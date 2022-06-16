@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <div>ログイン/ログアウト用(後で消す)
+     <% if customer_signed_in? %>
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+     <% else %>
+      <%= link_to "新規登録", new_customer_registration_path %>
+      <%= link_to "ログイン", new_customer_session_path %>
+     <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
