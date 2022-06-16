@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+　#　adminとcustomerでそれぞれログイン後の画面指定
+  def after_sign_in_path_for(resource)
+   case resource
+   when Admin
+    admin_items_path
+   when Customer
+    root_path
+   end
+  end
+
   protected
 
   #顧客側、WF3、sign_upの際のデータ操作を許可
