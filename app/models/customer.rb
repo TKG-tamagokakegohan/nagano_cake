@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #配送先
-  belongs_to :customer
+  #belongs_to :address
   #ログインする時に退会済み(is_active==false)のユーザーを弾くためのメソッド
   def active_for_authentication?
     #customerのis_activeがtrueならfalseを返すようにしている
