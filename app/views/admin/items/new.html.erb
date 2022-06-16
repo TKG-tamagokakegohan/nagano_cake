@@ -1,2 +1,23 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h1>商品新規登録</h1>
+  <%= form_with model: @item do |f| %>
+    <div class="form-group">
+      <%= f.label :item_image %>
+      <%= f.file_field :item_image, class: "form-control-file", accept: 'image/*' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :introduction %>
+      <%= f.text_area :introduction, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      ジャンル
+      <%#= f.label :genre %>
+      <%#= f.text_area :genre, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "新規登録", class: 'btn btn-success' %>
+    </div>
+  <% end %>
