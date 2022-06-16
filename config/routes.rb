@@ -25,7 +25,7 @@ Rails.application.routes.draw do
      }
 
     #顧客
-  namespace :public do
+    scope module: :public do
       #商品
       resources :items, only: [:index, :show]
       #カート内商品
@@ -46,9 +46,9 @@ Rails.application.routes.draw do
       patch '/customers/:id/out' => 'customers#out', as: 'out'
       #配送先
       resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-  end
-
       #homeコントローラ(top画面about画面)
       get '/about' => 'homes#about', as: 'about'
       root to: 'homes#top'
+    end
+
 end
