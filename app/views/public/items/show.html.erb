@@ -1,2 +1,24 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+
+<h1>6ページ</h1>
+
+<h1>ここにジャンル検索機能がくる</h1>
+
+    <%@genres.each do |genre| %>
+      <%=link_to genres.name  %>
+    <%end%>
+
+         <p>商品の画像が入る</p>
+
+            <h1>ショートケーキ</h1>
+              <p>美味しいショートケーキ</p>
+              <p>ジャンル:<%= link_to "ケーキ" %></p>
+              <p>￥<%=@item.price %></p>
+
+                  <h1>ここに商品の詳細情報が入る</h1>
+                    <%= form_with model: @item do |f| %>
+                      <p>数量を選択して下さい。</p>
+                      <%= f.select :name, *[1..10] %>
+                      <%= f.submit "カートに入れる" %>
+                    <%end%>
+
+<%=link_to "ホームページ", root_path %><br>
