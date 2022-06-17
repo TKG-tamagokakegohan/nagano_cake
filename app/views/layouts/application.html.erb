@@ -25,10 +25,11 @@
      <% end %>
     </div>
 
-    <div>サクセス・エラーメッセージ(確認用)
-    <%= flash[:notice] %>
-    <%= flash[:error] %>
-    </div>
+    <div><strong>
+      サクセス・エラーメッセージ(確認用)
+      <%= flash[:notice] %>
+      <%= flash[:error] %>
+    </strong></div>
 
     <%= yield %>
   </body>

@@ -5,7 +5,7 @@ class Public::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
 
   protected
-  #private
+  #private?
 
   #退会しているかを判断する
   def customer_state
