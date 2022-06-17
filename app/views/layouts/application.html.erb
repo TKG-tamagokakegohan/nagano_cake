@@ -15,6 +15,7 @@
     <%= link_to "ログイン",  new_admin_session_path %>
   <% end %>
   <body>
+
     <div>ログイン/ログアウト用(後で消す)
      <% if customer_signed_in? %>
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
@@ -23,8 +24,12 @@
       <%= link_to "ログイン", new_customer_session_path %>
      <% end %>
     </div>
+
+    <div>サクセス・エラーメッセージ(確認用)
     <%= flash[:notice] %>
     <%= flash[:error] %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

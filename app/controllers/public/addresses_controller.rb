@@ -2,7 +2,7 @@ class Public::AddressesController < ApplicationController
   def index
     @address = Address.new
     #@address = Address.find(params[:id])
-    @addreses = Address.all
+    @addresses = Address.all
   end
 
   def create
@@ -23,7 +23,6 @@ class Public::AddressesController < ApplicationController
   private
 
   def address_params
-    #!!!!!!!住所カラムも追加する!!!!
-    params.require(:address).permit(:post_code, :address_name)
+    params.require(:address).permit(:post_code, :address, :address_name)
   end
 end

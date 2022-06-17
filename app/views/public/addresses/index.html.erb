@@ -13,9 +13,10 @@
     <%= f.text_field :post_code %>
   </div>
 
-  <p>住所入れる</p>
-  <%#= f.label :"住所" %>
-  <%#= f.text_field :address %>
+  <div class = "field">
+    <%= f.label :"住所" %>
+    <%= f.text_field :address %>
+  </div>
 
   <div class = "field">
     <%= f.label :"宛名" %>
@@ -39,17 +40,17 @@
     </tr>
   </thred>
   <tbody>
-    <%# addresses.each do |address| %>
+    <% @addresses.each do |address| %>
     <tr>
-      <td><%#= address.post_code %></td>
-      <td><%#= address.address %></td>
-      <td><%#= address.address_name %></td>
+      <td><%= address.post_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.address_name %></td>
       <td>
-        <%#= link_to "編集する", edit_address_path %>
-        <%#= link_to "削除する", address_path, method: :delete, data: { confirm: "本当に削除しますか？"}%>
+        <%= link_to "編集する", edit_address_path(current_customer) %>
+        <%= link_to "削除する", address_path(current_customer), method: :delete, data: { confirm: "本当に削除しますか？"}%>
       </td>
     </tr>
-    <%# end %>
+    <% end %>
   </tbody>
 </table>
 
