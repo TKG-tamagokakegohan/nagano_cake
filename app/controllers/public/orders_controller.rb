@@ -14,4 +14,10 @@ class Public::OrdersController < ApplicationController
 
   def thanks
   end
+
+    private
+
+  def item_params
+    params.require(:item).permit(:item_image, :name, :introduction, :genre_id, :price, :is_active)
+  end
 end

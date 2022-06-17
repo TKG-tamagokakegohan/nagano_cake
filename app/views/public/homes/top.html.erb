@@ -1,11 +1,10 @@
-
+<div class="container">
 <h1>1ページ</h1>
 
 <h1>ここにジャンル検索機能がくる</h1>
-  <p>ケーキ</p>
-  <p>焼き菓子</p>
-  <p>プリン</p>
-  <p>キャンディ</p>
+  <%@genres = Genre.all.each do |genre| %>
+      <%= genre.name %>
+    <%end%>
 
     <h1>ここにお店の自己紹介文が入る</h1>
       <p>ようこそ、ながのCAKEへ！</p>
@@ -17,13 +16,10 @@
 
             <!--ここから商品一覧を表示-->
 
-            <p>商品画像が入る</p>
-            <p>商品名が入る</p>
-            <p>￥値段が入る</p>
-
             <% @itemes.each do |item| %>
-            <%= item.name %>
-            <%= item.price %>
+            <%= image_tag item.get_item_image(100,100) %><br>
+            <%= item.name %><br>
+            <%= item.price %><br>
             <% end %>
 
             <!--ここまで-->
@@ -52,3 +48,5 @@
 <br>
 <br>
 <br>
+
+</div>

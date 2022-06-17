@@ -1,10 +1,11 @@
+<div class="container">
 <h1>5ページ</h1>
 
 <h1>ここにジャンル検索機能がくる</h1>
-  <p>ケーキ</p>
-  <p>焼き菓子</p>
-  <p>プリン</p>
-  <p>キャンディ</p>
+
+    <%@genres = Genre.all.each do |genre| %>
+      <%=link_to genres.name  %>
+    <%end%>
 
         <!--ここから商品一覧を表示-->
 
@@ -12,7 +13,7 @@
         <p>商品名が入る</p>
         <p>￥値段が入る</p>
 
-        <% @itemes.each do |item| %>
+        <% @items.each do |item| %>
         <%= item.name %>
         <%= item.price %>
         <% end %>
@@ -24,7 +25,7 @@
 
 
 <%=link_to "ホームページ", root_path %><br>
-
+</div>
 
 
 

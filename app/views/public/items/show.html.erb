@@ -1,9 +1,9 @@
-
+<div class= "conteainer">
 <h1>6ページ</h1>
 
 <h1>ここにジャンル検索機能がくる</h1>
 
-    <%@genres.each do |genre| %>
+    <%@genres = Genre.all.each do |genre| %>
       <%=link_to genres.name  %>
     <%end%>
 
@@ -22,3 +22,5 @@
                     <%end%>
 
 <%=link_to "ホームページ", root_path %><br>
+
+</div>

@@ -1,10 +1,10 @@
 class Public::ItemsController < ApplicationController
   def index
-    @itemes = Item.all
+     @items = Item.all
+     @genres = Genre.all
   end
 
   def show
-    @item = Item.new
     @genres = Genre.all
   end
 
