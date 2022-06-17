@@ -1,2 +1,30 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<h1>5ページ</h1>
+
+<h1>ここにジャンル検索機能がくる</h1>
+  <p>ケーキ</p>
+  <p>焼き菓子</p>
+  <p>プリン</p>
+  <p>キャンディ</p>
+
+        <!--ここから商品一覧を表示-->
+
+        <p>商品画像が入る</p>
+        <p>商品名が入る</p>
+        <p>￥値段が入る</p>
+
+        <% @itemes.each do |item| %>
+        <%= item.name %>
+        <%= item.price %>
+        <% end %>
+
+        <!--ここまで-->
+
+<h1>ここにページネーションが入る</h1>
+
+
+
+<%=link_to "ホームページ", root_path %><br>
+
+
+
+
