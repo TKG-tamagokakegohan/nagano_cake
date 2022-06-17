@@ -5,8 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #配送先
-  # !!!!!!カラムとモデル名が被ってる!!!!!!
-  belongs_to :address
+  has_many :addresses, dependent: :destroy
 
   #ログインする時に退会済み(is_active==false)のユーザーを弾くためのメソッド
   def active_for_authentication?
