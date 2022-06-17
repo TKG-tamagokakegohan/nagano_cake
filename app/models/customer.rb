@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
 
   #配送先
   # !!!!!!カラムとモデル名が被ってる!!!!!!
-  #belongs_to :address
+  belongs_to :address
 
   #ログインする時に退会済み(is_active==false)のユーザーを弾くためのメソッド
   def active_for_authentication?
