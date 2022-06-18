@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   #配送先
   has_many :addresses, dependent: :destroy
+  has_many :cart_items
 
   #ログインする時に退会済み(is_active==false)のユーザーを弾くためのメソッド
   def active_for_authentication?
