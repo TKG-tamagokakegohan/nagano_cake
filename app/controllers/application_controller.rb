@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
    end
   end
 
+
   protected
 
   #顧客側、WF3、sign_upの際のデータ操作を許可
