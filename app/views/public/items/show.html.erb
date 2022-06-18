@@ -1,24 +1,25 @@
 
 <h1>6ページ</h1>
 
-<h1>ここにジャンル検索機能がくる</h1>
+<p>ジャンル検索</p>
 
-    <%@genres.each do |genre| %>
-      <%=link_to genres.name  %>
+    <%@genres = Genre.all.each do |genre| %>
+      <%= genre.name  %><br><br><br><br>
     <%end%>
 
-         <p>商品の画像が入る</p>
+          <%= image_tag @item.get_item_image(100,100) %>
 
             <h1>ショートケーキ</h1>
-              <p>美味しいショートケーキ</p>
-              <p>ジャンル:<%= link_to "ケーキ" %></p>
-              <p>￥<%=@item.price %></p>
+              <%= @item.name %>
+              <p>￥<%= @item.with_tax_price%></p>
 
-                  <h1>ここに商品の詳細情報が入る</h1>
-                    <%= form_with model: @item do |f| %>
-                      <p>数量を選択して下さい。</p>
-                      <%= f.select :name, *[1..10] %>
+                 <% if @item.is_active == TRUE %>
+                    <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true) do |f| %>
+                       <%= f.hidden_field :item_id, value: @item.id  %>
+                       <%= f.select :item_count, *[1..10], include_blank: "個数選択" %>
                       <%= f.submit "カートに入れる" %>
                     <%end%>
+                <%end%>
 
 <%=link_to "ホームページ", root_path %><br>
+

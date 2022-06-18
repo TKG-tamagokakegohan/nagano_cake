@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
     }
 
+    devise_for :customers,skip: [:passwords], controllers: {
+      registrations: "public/registrations",
+      sessions: 'public/sessions'
+     }
+
     #管理者
     namespace :admin do
       #商品
@@ -19,10 +24,6 @@ Rails.application.routes.draw do
       resources :order_details, only: [:update]
     end
 
-     devise_for :customers,skip: [:passwords], controllers: {
-      registrations: "public/registrations",
-      sessions: 'public/sessions'
-     }
 
     #顧客
     scope module: :public do
