@@ -17,7 +17,7 @@ before_action :authenticate_admin!
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = "会員情報の編集が完了しました。"
-      #redirect_to admin_customers_path(@customer)
+      redirect_to admin_customer_path(@customer)
       #redirect_to "/admin/customers/:id"
     else
       flash[:error] = "会員情報の編集を正常に行えませんでした。"
@@ -27,7 +27,7 @@ before_action :authenticate_admin!
 
   private
 
-  def cusotmer_params
+  def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kata, :first_name_kata, :post_code, :address, :phone_number, :email, :is_active)
   end
 

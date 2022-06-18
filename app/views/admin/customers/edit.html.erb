@@ -1,6 +1,9 @@
 <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
 
-<%= form_with model:@customer do |f| %>
+<%#= form_with model: @customer, url: admin_customer_path do |f| %>
+<%# 名前空間(namespace)が異なるコントローラを簡潔に指定する記述%>
+<%= form_with model:[:admin, @customer] do |f| %>
+
   <table>
     <tr>
       <td>会員ID</td>
