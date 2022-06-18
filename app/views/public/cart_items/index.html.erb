@@ -1,27 +1,50 @@
+<h1>7ページ</h1>
+<h4>ショッピングカート</h4>
+<table>
+   <tr>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th></th>
+   </tr>
+     <% total = 0 %>
+     <!--合計金額totalの初期化-->
 
-<h1>16ページ</h1>
+ <% if current_customer.cart_items.present? %>
+    <% @cart_items.each do |cart_item| %>
+     <tr>
+       <td>
 
-<h1>注文履歴一覧</h1>
-
-<h1>注文日</h1>
-<p>日付け</p>
-
-<h1>配送先</h1>
-<p>郵便番号</p>
-
-<h1>注文商品</h1>
-<p>商品名</p>
-
-<h1>支払い金額</h1>
-<p>値段</p>
-
-<h1>ステータス</h1>
-<p>入金確認</p>
-
-<h1>注文詳細</h1>
-<p>表示する</p>
-
-
-
+         <%= image_tag cart_item.item.get_item_image(100,100) %>
+         <%= cart_item.item.name %>
+         <!--商品名-->
+       </td>
+       <td><%= (cart_item.item.price*1.1).to_i %></td>
+       <td>
+         <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true, method: :patch do |f| %>
+           <%= f.number_field :item_count, min: 1, max:10, id: "quantity_cart"%>
+           <%= f.submit "変更",class: "btn btn-success" %>
+           <!--セレクトboxで数量変更-->
+         <% end %>
+       </td>
+       <td>
+         <% subtotal = ((cart_item.item.price*cart_item.item_count)*1.1).to_i %>
+         <!--小計を計算する-->
+         <%= subtotal %>
+         <!--小計を表示-->
+       </td>
+       <td>
+         <%= link_to "商品をカートから削除する", cart_item_path(cart_item.id, cart_item), method: :delete,class: "btn btn-danger" %>
+       </td>
+     </tr>
+       <% total += subtotal %>
+       <!--アイテムごとに合計金額totalに反映 計算しておく-->
+     <% end %>
+<% end %>
+   <tr>
+    <th>合計金額</th>
+    <td><%= total %></td>
+   </tr>
 
 <%=link_to "ホームページ", root_path %><br>

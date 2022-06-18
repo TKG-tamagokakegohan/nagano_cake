@@ -1,21 +1,19 @@
 <div class="container">
 <h1>5ページ</h1>
 
-<h1>ここにジャンル検索機能がくる</h1>
+<p>ジャンル検索</p>
 
     <%@genres = Genre.all.each do |genre| %>
-      <%=link_to genres.name  %>
+      <%= genre.name  %><br>
     <%end%>
 
         <!--ここから商品一覧を表示-->
 
-        <p>商品画像が入る</p>
-        <p>商品名が入る</p>
-        <p>￥値段が入る</p>
-
+      <h1>商品一覧</h1>
         <% @items.each do |item| %>
-        <%= item.name %>
-        <%= item.price %>
+         <%= image_tag item.get_item_image(100,100) %><br>
+        <%= item.name %><br>
+        <p>￥<%= item.price %></p><br>
         <% end %>
 
         <!--ここまで-->

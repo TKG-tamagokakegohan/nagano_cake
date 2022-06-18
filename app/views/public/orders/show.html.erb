@@ -9,11 +9,20 @@
 <h1>注文日</h1>
 <p>日付</p>
 
-<h1>配送先</h1>
-<p>支払い方法</p>
 
-<h1>支払方法</h1>
-<p>銀行振り込み</p>
+
+<%= form_with model: @item do |f| %>
+<p>配送先</p>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+
+<p>支払方法</p>
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method, "クレジットカード" %>
+
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method, "銀行振込" %>
+
+<%end%>
 
 <h1>ステータス</h1>
 <p>入金確認</p>
