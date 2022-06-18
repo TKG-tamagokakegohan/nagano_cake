@@ -1,7 +1,11 @@
 class Item < ApplicationRecord
   belongs_to :genre
 
-   has_one_attached :item_image
+  has_one_attached :item_image
+
+  validates :name, presence:true
+  validates :introduction, presence:true
+  validates :price, presence:true
 
   def get_item_image(width, height)
     unless item_image.attached?
