@@ -33,10 +33,10 @@
     <%= f.text_field :post_code %>
   </div>
 
-
-    <%#= f.label :"住所" %>
-    <%#= f.text_field :address %>
-
+  <div class = "field">
+    <%= f.label :"住所" %>
+    <%= f.text_field :address %>
+  </div>
 
   <div class = "field">
     <%= f.label :"電話番号" %>
@@ -45,7 +45,7 @@
 
   <div class = "field">
     <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class = "action">
@@ -53,4 +53,4 @@
   </div>
 <% end %>
 
-<%= link_to "退会する", out_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+<%= link_to "退会する", quit_path %>

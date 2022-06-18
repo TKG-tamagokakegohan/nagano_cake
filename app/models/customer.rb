@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :cart_items
 
-  #ログインする時に退会済み(is_active==false)のユーザーを弾くためのメソッド
+  #ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約
   def active_for_authentication?
     #customerのis_activeがtrueならfalseを返すようにしている
     super && (self.is_active == true)
