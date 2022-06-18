@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_correct_customer
 
   def show
     @customer = Customer.find(params[:id])
@@ -30,7 +31,7 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = "会員情報の編集が完了しました。"
       redirect_to customer_path(@customer.id)
     else
-      flash[:error] = "会員情報の編集を正常に行えませんでした。"
+      flash[:error] = "会員情報の編集に失敗しました。"
       render :edit
     end
   end
@@ -40,4 +41,12 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kata, :first_name_kata, :post_code, :address, :phone_number, :email)
   end
+
+  def ensure_correct_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
+      redirect_to root_path
+    end
+  end
+
 end

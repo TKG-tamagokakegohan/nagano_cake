@@ -20,7 +20,7 @@ before_action :authenticate_admin!
       redirect_to admin_customer_path(@customer)
       #redirect_to "/admin/customers/:id"
     else
-      flash[:error] = "会員情報の編集を正常に行えませんでした。"
+      flash[:error] = "会員情報の編集に失敗しました。"
       render :edit
     end
   end
