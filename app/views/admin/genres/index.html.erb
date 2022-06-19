@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-7">
-    <h3 class="mb-5">ジャンル一覧・追加</h3>
+    <div class="col-lg-4 offset-lg-1 mb-5 ">
+      <h3>ジャンル一覧・追加</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-7 mb-4">
       <%= form_with model: @genre, url:admin_genres_path do |f| %>
         <div class="form-group">
           <%= f.label :name, "ジャンル名", class: 'font-weight-bold' %>
@@ -14,7 +18,7 @@
   <div class="row">
     <div class="col-lg-4">
       <table class='table'>
-        <thead>
+        <thead class="table-light">
           <tr>
             <th>ジャンル</th>
             <th></th>
