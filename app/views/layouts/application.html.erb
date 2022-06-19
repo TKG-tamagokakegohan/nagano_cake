@@ -11,13 +11,12 @@
   </head>
 
   <body>
-
-    <%# request.fullpath → 最後にリクエストされたURLのパラメターを含むフルパス %>
-    <% if request.fullpath.include? "admin" %>
+     <%# request.fullpath → 最後にリクエストされたURLのパラメターを含むフルパス %>
+     <% if request.fullpath.include? "admin" %>
      <%= render "layouts/admin_header" %>
-    <% else %>
+     <% else %>
      <%= render "layouts/customer_header" %>
-    <% end %>
+     <% end %>
     <%# adminとcustomerを同じHTML内に記述する場合は
     [if customer_signed_in?],[customerのヘッダー記述],
     [elsif admin_signed_in?],[adminのヘッダー記述],[end]でできそう%>
