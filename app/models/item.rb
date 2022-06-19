@@ -2,13 +2,11 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :cart_items
 
-  validates :price, presence: true
-
   has_one_attached :item_image
 
-  validates :name, presence:true
-  validates :introduction, presence:true
-  validates :price, presence:true
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true
 
   def get_item_image(width, height)
     unless item_image.attached?
@@ -26,6 +24,10 @@ class Item < ApplicationRecord
 ## 小計を求めるメソッド
 def subtotal
     item.with_tax_price * amount
+end
+
+def is_active_color
+  is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
 end
 
 end
