@@ -33,12 +33,14 @@ Rails.application.routes.draw do
       resources :cart_items, only: [:index, :create, :update, :destroy]
       #カート内商品をすべて削除
       delete '/cart_items/all_destroy' => 'cart_items#all_destroy', as: 'all_destroy'
+
       #注文
-      resources :orders, only: [:index, :show, :new, :create]
-      #注文情報確認画面
-      get '/orders/log' => 'orders#log', as: 'log'
-      #注文完了画面
+      post '/orders/log' => 'orders#log', as: 'log'
+            #注文完了画面
       get '/orders/thanks' => 'orders#thanks', as: 'thanks'
+            #注文情報確認画面
+      resources :orders, only: [:index, :show, :new, :create]
+
       #会員
       resources :customers, only: [:show, :edit, :update]
       #ユーザ退会画面

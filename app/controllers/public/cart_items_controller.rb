@@ -16,13 +16,13 @@ class Public::CartItemsController < ApplicationController
             cart_item.item_count += params[:cart_item][:item_count].to_i
            #cart_item.quantityに今追加したparams[:cart_item][:quantity]を加える
                                                               #.to_iとして数字として扱う
-            cart_item.save
+            cart_item.update(item_count: cart_item.item_count)
 
             redirect_to cart_items_path
 
         # もしカート内に「同じ」商品がない場合は通常の保存処理
-        elsif @cart_item.save
-             @cart_items = current_customer.cart_items.all
+        elsif @cart_item.save!
+            # @cart_items = current_customer.cart_items.all
              redirect_to cart_items_path
         else# 保存できなかった場合
             # render 'index'
@@ -52,6 +52,6 @@ class Public::CartItemsController < ApplicationController
 
 private
     def cart_item_params
-        params.require(:cart_item).permit(:item_id, :item_count)
+        params.require(:cart_item).permit(:item_id, :customer_id, :item_count)
     end
 end

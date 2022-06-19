@@ -54,10 +54,25 @@
 <p>ハッシュとは？どこで使われるのかが分からない(カート機能で使う)</p>
 <p>バイディングプライの使い方が分からない</p>
 <p>
-  1⃣public/items/showページでcreateの際にターミナル上でエラーとでます。<br>
-2⃣カート機能を実装するさいにhidden_fieldを使ったのですが、ターミナル上でどのように表示されるのでしょうか？またどのような場面で使われるのでしょうか？<br>
-3⃣binding.pryはどのような場面で使われるのでしょうか、またbinding.pryをインストールしたにも関わらずターミナル上で使うことができません。<br>
-4⃣カート機能を実装する際にハッシュとありますが、ハッシュの見方が分かりません。またどのような時に使われるのでしょうか？<br>
+注文機能の実装時に以下のエラーが出て前に進めません。
+1⃣public/odrers/newは正常にクリエートできる
+↓
+2⃣public/odrers/logでsubmit→create時にエラーがでます。
+
+submitを押したらこのようなエラーが出ました。
+ActiveRecord::NotNullViolation in Public::OrdersController#create
+SQLite3::ConstraintException: NOT NULL constraint failed: orders.payment_method
+
+ターミナル上では
+Unpermitted parameter: :name
+rollback transaction
+と出ました。
+
+ここまで参考サイトを見本に進めてきましたが、エラーが解決できずに前に進めません。
+
+2⃣form_withを使った時にURLを指定するときと指定しない時はどこのコントローラアクションに飛ぶか分かりません。
+URLを指定する場合は画面の遷移先のURLを記述をすればいいのでしょうか？
+注文確定→サンクスに飛ぶフォームでしょうか？
 </p>
 
 <br>

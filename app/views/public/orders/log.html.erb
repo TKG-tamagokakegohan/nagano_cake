@@ -1,28 +1,32 @@
-
 <h1>8ページ</h1>
+<h1>9ページ</h1>
 
+ <% @total = 0 %>
+<!-- ユーザーに確認してもらうための表示です -->
+<% @cart_items.each do |cart| %>
 
-<h1>注文情報入力</h1>
+  <%= cart.item.name %><br> <!-- 商品名 -->
+  <%= (cart.item.price).to_s(:delimited) %><br>
+  <p>個数:<!-- 金額 -->
+  <%= cart.item_count %></p> <!-- 個数 -->
+  <%= subtotal = (cart.item.price*cart.item_count).to_s(:delimited) %><br> <!-- 小計 -->
+  <%= @total += ((cart.item.price*cart.item_count)*1.1).to_i %><br>
+<% end %>
 
-<h1>支払い方法</h1>
-<%= form_with model: @item do |f| %>
+<p>ご請求金額</p>
+<%= @total.to_s(:delimited) %> <!-- お買い物の合計金額 -->
+<p>お届け先</p>
+<%= @order.address %>
 
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %><br>
-
-<%= f.radio_button :payment_method, "credit_card" %>
-<%= f.label :payment_method, "クレジットカード" %>
-
-<%= f.radio_button :payment_method, "transfer" %>
-<%= f.label :payment_method, "銀行振込" %>
-
-<%end%>
-<h1>お届け先</h1>
-<p>ご自身の住所</p>
-<p>登録済住所から選択</p>
-<p>新しいお届け先</p>
-
-<h1>確認画面へ進む</h1>
-
-
+<!-- ユーザーには注文確定ボタンだけ表示します -->
+<%= form_with model: @order, local: true do |f| %>
+  <%= f.hidden_field :address_name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :post_code %>
+  <%= f.hidden_field :postage %>
+  <%= f.hidden_field :billing_amount, value: @total %>
+  <%= f.submit "注文を確定する" %>
+<% end %>
 
 <%=link_to "ホームページ", root_path %><br>
