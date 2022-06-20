@@ -1,34 +1,41 @@
 
-<h1>9ページ</h1>
-
-<h1>注文情報確認</h1>
-
-<%@items.each do |item| %>
-<%=image_tag item.get_item_image(100,100) %><br>
-<%=item.name %>
-
-<p>単価(税込)</p>
-<%=item.with_tax_price%>
-<%end%>
+<h1>8ページ</h1>
 
 
+<!-- @order でラジオボタンを使って情報を送ります -->
 
-<h1>数量</h1>
+<%= form_with model: @order, url:log_path ,method: :post, local: true do |f| %>
+<p>支払方法</p>
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method, "クレジットカード" %>
 
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method, "銀行振込" %>
 
-<h1>小計</h1>
+<!-- customer テーブルに登録されている住所の場合です -->
+  <%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
+  <%= f.label :address_number_1, "ご自身の住所" %>
+  <%= current_customer.address %>
 
+<!-- 登録されたaddressから選んでもらう場合です -->
+  <%= f.radio_button :address_number, 2 %>
+  <%= f.label :address_number_2, "登録先の住所" %>
+ <%= f.collection_select(:registered, current_customer.addresses.all, :id, :address) %>
+<!-- registered として current_customer.address.all で取得した id を送ります。
+     ユーザーに表示して選択してもらうのは address です -->
+<!-- ドロップダウンを選択したら自動でラベルも選択されるようにしたかったのですが、現状ではわかりませんでした -->
 
-<h1>送料</h1>
+<!-- 新しい住所を追加する場合です -->
+  <%= f.radio_button :address_number, 3 %>
+  <%= f.label :address_number_3, "新しいお届け先" %>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  <%= f.label :address_name, "宛名" %>
+  <%= f.text_field :address_name %>
+<!-- 選んでもらったデータを送ります -->
+  <%= f.submit "確認画面へ進む" %>
+<% end %>
 
-
-<h1>商品合計</h1>
-
-
-<h1>請求金額</h1>
-
-<h1>支払い方法</h1>
-
-<h1>お届け先</h1>
 
 <%=link_to "ホームページ", root_path %><br>
+
