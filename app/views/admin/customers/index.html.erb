@@ -19,6 +19,7 @@
         <th>ステータス</th>
       </tr>
     </thred>
+
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
@@ -34,6 +35,7 @@
         </tr>
       <% end %>
     </tbody>
+
   </table>
   <%= paginate @customers %>
 

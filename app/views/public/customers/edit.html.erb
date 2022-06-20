@@ -11,6 +11,7 @@
       <table class = "table table-borderless">
         <%= form_with model:@customer do |f| %>
         <%# viewspublic/registrations/new.html.erb から貼り付け %>
+
         <tr>
           <td><%= f.label :"名前" %></td>
           <td>
@@ -54,6 +55,7 @@
             <%= link_to "退会する", quit_path, class: "btn btn-danger ml-4" %>
           </td>
         </tr>
+
         <% end %>
       </table>
     </div>

@@ -6,10 +6,11 @@
     </div>
   </div>
 
+  <%# 配送先登録フォーム %>
   <div class = "row">
     <div class = "col-lg-7 mb-4">
-      <%# 配送先登録フォーム %>
       <%= form_with model:@address do |f| %>
+
         <div class = "form-group row">
           <%= f.label :"郵便番号(ハイフンなし)", class: "col-sm-4" %>
           <%= f.text_field :post_code, placeholder: "1234567", class: "form-control", style: "width: 30%" %>
@@ -25,15 +26,17 @@
           <%= f.text_field :address_name, placeholder: "山田太朗", class: "form-control mr-5", style: "width: 30%" %>
           <%= f.submit "新規登録", class: "btn btn-success ml-4" %>
         </div>
+
       <% end %>
     </div>
   </div>
 
+  <%# 配送先一覧%>
   <div class = "row">
     <div class = "col-lg-8 mb-4">
-      <%# 配送先一覧%>
       <%# if @addresses.present? %>
       <table class = "table table-bordered">
+
         <thred class = "table-light">
           <tr>
           <th>郵便番号</th>
@@ -42,6 +45,7 @@
           <th colspan = "2"></th>
           </tr>
         </thred>
+
         <tbody>
           <% @addresses.each do |address| %>
             <tr>
@@ -55,6 +59,7 @@
             </tr>
           <% end %>
         </tbody>
+
       </table>
       <%# end %>
     </div>

@@ -12,12 +12,14 @@
         <%#= form_with model: @customer, url: admin_customer_path do |f| %>
         <%# 名前空間(namespace)が異なるコントローラを簡潔に指定する記述%>
         <%= form_with model:[:admin, @customer] do |f| %>
+
         <tr>
           <td>会員ID</td>
           <td>
            <%= @customer.id %>
           </td>
         </tr>
+
         <tr>
           <td>氏名</td>
           <td>
@@ -25,6 +27,7 @@
            <%= f.text_field :first_name, style: "width: 35%" %>
           </td>
         </tr>
+
         <tr>
           <td>フリガナ</td>
           <td>
@@ -32,22 +35,27 @@
            <%= f.text_field :first_name_kata, style: "width: 35%" %>
           </td>
         </tr>
+
         <tr>
           <td>郵便番号</td>
           <td><%= f.text_field :post_code, style: "width: 35%" %></td>
         </tr>
+
         <tr>
           <td>住所</td>
           <td><%= f.text_field :address, style: "width: 100%" %></td>
         </tr>
+
         <tr>
           <td>電話番号</td>
           <td><%= f.telephone_field :phone_number, style: "width: 35%" %></td>
         </tr>
+
         <tr>
           <td>メールアドレス</td>
           <td><%= f.email_field :email, style: "width: 35%" %></td>
         </tr>
+
         <tr>
           <td>会員ステータス</td>
           <td>
@@ -57,10 +65,12 @@
             <%= f.label :is_active, "退会" %>
           </td>
         </tr>
+
         <tr>
           <td></td>
           <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
         </tr>
+
         <% end %>
       </table>
     </div>
