@@ -1,56 +1,62 @@
-<h2>会員情報編集</h2>
+<div class ="container">
 
-<%# バリデーションエラーメッセージ%>
-<% if @customer.errors.any? %>
- <%= @customer.errors.count %>件のエラーが発生しました
- <ul>
-   <% @customer.errors.full_messages.each do |message| %>
-   <li><%= message %></li>
-   <% end %>
- </ul>
-<% end %>
-
-<%= form_with model:@customer do |f| %>
-  <%# viewspublic/registrations/new.html.erb から貼り付け %>
-  <div class = "field">
-    <%= f.label :"名前" %>
-    <%= f.label :"(姓)" %>
-    <%= f.text_field :last_name, autofocus: true %>
-    <%= f.label :"(名)" %>
-    <%= f.text_field :first_name %>
+  <div class = "row">
+    <div class = "col-lg-4 offset-lg-1 mb-3">
+      <h3>会員情報編集</h3>
+    </div>
   </div>
 
-  <div class = "field">
-    <%= f.label :"フリガナ" %>
-    <%= f.label :"(セイ)" %>
-    <%= f.text_field :last_name_kata %>
-    <%= f.label :"(メイ)" %>
-    <%= f.text_field :first_name_kata %>
+  <div class  = "row">
+    <div class = "col-lg-10 mb-3">
+      <table class = "table table-borderless">
+        <%= form_with model:@customer do |f| %>
+        <%# viewspublic/registrations/new.html.erb から貼り付け %>
+        <tr>
+          <td><%= f.label :"名前" %></td>
+          <td>
+            <%= f.text_field :last_name, autofocus: true, class: "mr-4", style: "width: 35%" %>
+            <%= f.text_field :first_name, style: "width: 35%" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :"フリガナ" %></td>
+          <td>
+            <%= f.text_field :last_name_kata, class: "mr-4", style: "width: 35%" %>
+            <%= f.text_field :first_name_kata, style: "width: 35%" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :"郵便番号", style: "width: 35%" %></td>
+          <td><%= f.text_field :post_code, style: "width: 35%" %></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :"住所" %></td>
+          <td><%= f.text_field :address, style: "width: 100%" %></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :"電話番号" %></td>
+          <td><%= f.telephone_field :phone_number, style: "width: 35%" %></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :"メールアドレス" %></td>
+          <td><%= f.email_field :email, autocomplete: "email", style: "width: 35%" %></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit "編集内容を保存", class: "btn btn-success mr-5" %>
+            <%= link_to "退会する", quit_path, class: "btn btn-danger ml-4" %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 
-  <div class = "field">
-    <%= f.label :"郵便番号" %>
-    <%= f.text_field :post_code %>
-  </div>
-
-  <div class = "field">
-    <%= f.label :"住所" %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class = "field">
-    <%= f.label :"電話番号" %>
-    <%= f.telephone_field :phone_number %>
-  </div>
-
-  <div class = "field">
-    <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class = "action">
-    <%= f.submit "編集内容を保存" %>
-  </div>
-<% end %>
-
-<%= link_to "退会する", quit_path %>
+</div>
