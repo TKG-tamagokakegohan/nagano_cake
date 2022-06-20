@@ -9,8 +9,8 @@
   <%= (cart.item.price).to_s(:delimited) %><br>
   <p>個数:<!-- 金額 -->
   <%= cart.item_count %></p> <!-- 個数 -->
-  <%= subtotal = (cart.item.price*cart.item_count).to_s(:delimited) %><br> <!-- 小計 -->
-  <%= @total += ((cart.item.price*cart.item_count)*1.1).to_i %><br>
+  <p>￥<%= subtotal = (cart.item.price*cart.item_count).to_s(:delimited) %>円（税抜）</p><br> <!-- 小計 -->
+  <p>￥<%= @total += ((cart.item.price*cart.item_count)*1.1).to_i %>円(税込)<p><br>
 <% end %>
 
 <p>ご請求金額</p>
