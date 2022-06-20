@@ -1,32 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="border">
+        <div class="border text-center">ジャンル検索</div>
+          <% @genres.each do |genre| %>
+            <div class="genre ml-4"><%= genre.name %></div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-6 offset-lg-1 mb-5">
+        <%= image_tag "main.jpg" , class: "main_image" %>
+        <p>ようこそ、ながのCAKEへ！</p>
+        <p>このサイトは、ケーキ販売のECサイトになります。</p>
+        <p>会員でない方も商品の閲覧はできますが、</p>
+        <p>購入には会員登録が必要になります。</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h4 class="ml-5 font-weight-bold">新着商品</h4><br>
+      <% @itemes.each do |item| %>
+        <div class="col-lg-2 mt-5">
+          <%= image_tag item.get_item_image(100,100) %><br>
+          <%= item.name %><br>
+          ￥<%= item.price %><br>
+        </div>
+      <% end %>
+  </div>
+  <div class="text-right mr-5">
+    <%= link_to "全ての商品を見る >", items_path %>
+  </div>
 
-  <div class = "image"></div>
-<h1>1ページ</h1>
-
-<p>ジャンル検索</p>
-  <%@genres = Genre.all.each do |genre| %>
-      <%= genre.name %>
-    <%end%>
-
-    <h1>ここにお店の自己紹介文が入る</h1>
-      <p>ようこそ、ながのCAKEへ！</p>
-      <p>このサイトは、ケーキ販売のECサイトになります。</p>
-      <p>会員でない方も商品の閲覧はできますが、</p>
-      <p>購入には会員登録が必要になります。</p>
-
-        <h1>ここに新着商品一覧が表示される</h1>
-
-            <!--ここから商品一覧を表示-->
-
-            <% @itemes.each do |item| %>
-            <%= image_tag item.get_item_image(100,100) %><br>
-            <%= item.name %><br>
-            <%= item.price %><br>
-            <% end %>
-
-            <!--ここまで-->
+    <br>
+    <br>
 
 
-            <p>全ての商品を見るリンクタグが入る</p>
+
             <%=link_to "aboutへ", about_path %><br>
             <%=link_to "商品一覧ページへ 5", items_path %><br>
             <%=link_to "商品詳細ページへ まだ飛べない 6"%><br>
@@ -37,15 +46,8 @@
             <%=link_to "注文履歴詳細 まだ飛べない", about_path %><br>
             <%=link_to "注文履歴一覧へ 7", cart_items_path %><br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
 <br>
 <h1>質問</h1>
 <p>public/items/show/createができない</p>
@@ -57,15 +59,4 @@
 <p>
 CSSが適用しない(image.jpg)<br>
 1.000ができないdelimited
-</p>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
