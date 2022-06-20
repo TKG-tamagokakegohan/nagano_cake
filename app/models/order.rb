@@ -3,5 +3,5 @@ belongs_to :customer
 # 注文機能
 has_many :order_details
 
-  enum order_status: { awaiting_payment: 0, payment_confirmation: 1, under_manufacture: 2, preparing_to_ship: 3, already_shipped: 4}
+  enum order_status: { "入金待ち": 0, "入金確認": 1, "製作中": 2, "発送準備中": 3, "発送済み": 4}
 end
