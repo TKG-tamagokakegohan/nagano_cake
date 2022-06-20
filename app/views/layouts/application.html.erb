@@ -11,22 +11,18 @@
   </head>
 
   <body>
-     <%# request.fullpath → 最後にリクエストされたURLのパラメターを含むフルパス %>
-     <% if request.fullpath.include? "admin" %>
-     <%= render "layouts/admin_header" %>
-     <% else %>
-     <%= render "layouts/customer_header" %>
-     <% end %>
-    <%# adminとcustomerを同じHTML内に記述する場合は
-    [if customer_signed_in?],[customerのヘッダー記述],
-    [elsif admin_signed_in?],[adminのヘッダー記述],[end]でできそう%>
+    <%= render "layouts/header" %>
+    <main>
+      
+     　<div><strong>
+        サクセス・エラーメッセージ(確認用)
+        <%= flash[:notice] %>
+        <%= flash[:error] %>
+      </strong></div>
 
-    <div><strong>
-      サクセス・エラーメッセージ(確認用)
-      <%= flash[:notice] %>
-      <%= flash[:error] %>
-    </strong></div>
-
-    <%= yield %>
+      <%= yield %>
+    </main>
+    <footer>
+    </footer>
   </body>
 </html>
