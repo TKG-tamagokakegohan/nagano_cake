@@ -6,25 +6,30 @@
   </div>
   <div class="row">
     <div class="col">
-    <table class='table'>
-      <thead>
-        <tr class= "table-secondary">
-          <th>購入日時</th>
-          <th>購入者</th>
-          <th>注文個数</th>
-          <th>注文ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
-            <td><%= order.customer.last_name + order.customer.first_name %></td>
-            <td><%#= order.order_details.item_count %></td>
-            <td><%= order.order_status %></td>
+      <table class='table'>
+        <thead>
+          <tr class= "table-secondary">
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
+              <td><%= order.customer.last_name + order.customer.first_name %></td>
+              <% @item_count = 0 %>
+              <%  order.order_details.each do |detail| %>
+                <%# @item_count = @item_count + detail.item_count %>
+                <% @item_count += detail.item_count %>
+              <% end %>
+              <td><%= @item_count %></td>
+              <td><%= order.order_status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
     <%= paginate @orders %>
