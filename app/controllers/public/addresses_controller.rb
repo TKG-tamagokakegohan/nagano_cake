@@ -1,8 +1,8 @@
 class Public::AddressesController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def index
-    #@addresses = current_customer.address
+    #@addresses = current_customer.addresses
     @customer = current_customer
     @addresses = @customer.addresses
     @address = Address.new
@@ -16,9 +16,11 @@ class Public::AddressesController < ApplicationController
       flash[:notice] = "新規配送先の保存が完了しました。"
       redirect_to addresses_path
     else
-      #@address = Address.new
-      #@addresses = current_customer.address
-      @addresses = @customer.addresses
+      @address = Address.new
+      #@customer = current_customer
+      #@addresses = @customer.addresses
+      flash[:error] = "新規配送先の保存に失敗しました。"
+      @addresses = current_customer.addresses
       render :index
     end
   end
@@ -33,6 +35,7 @@ class Public::AddressesController < ApplicationController
       flash[:notice] = "配送先の編集を更新しました。"
       redirect_to addresses_path
     else
+      flash[:notice] = "配送先の編集に失敗しました。"
       render :edit
     end
   end

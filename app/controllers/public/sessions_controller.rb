@@ -4,7 +4,6 @@ class Public::SessionsController < Devise::SessionsController
   #退会フラグ
   before_action :customer_state, only: [:create]
 
-
   protected
   #private?
 
