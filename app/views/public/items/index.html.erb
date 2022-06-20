@@ -4,14 +4,16 @@
 <p>ジャンル検索</p>
 
     <%@genres = Genre.all.each do |genre| %>
-      <%= genre.name  %><br>
+      <%= genre.name  %>
     <%end%>
 
         <!--ここから商品一覧を表示-->
 
       <h1>商品一覧</h1>
         <% @items.each do |item| %>
+        <%= link_to item_path(item.id) do%>
          <%= image_tag item.get_item_image(100,100) %><br>
+         <%end%>
         <%= item.name %><br>
         <p>￥<%= item.price %></p><br>
         <% end %>

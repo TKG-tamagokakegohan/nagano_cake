@@ -4,12 +4,11 @@
 <p>ジャンル検索</p>
 
     <%@genres = Genre.all.each do |genre| %>
-      <%= genre.name  %><br><br><br><br>
+      <%= genre.name  %><br>
     <%end%>
-
+<br><br><br><br>
           <%= image_tag @item.get_item_image(100,100) %>
 
-            <h1>ショートケーキ</h1>
               <%= @item.name %>
               <p>￥<%= @item.with_tax_price%></p>
 
@@ -23,4 +22,3 @@
                 <%end%>
 
 <%=link_to "ホームページ", root_path %><br>
-

@@ -1,4 +1,3 @@
-<h1>8ページ</h1>
 <h1>9ページ</h1>
 
  <% @total = 0 %>
@@ -10,11 +9,13 @@
   <p>個数:<!-- 金額 -->
   <%= cart.item_count %></p> <!-- 個数 -->
   <p>￥<%= subtotal = (cart.item.price*cart.item_count).to_s(:delimited) %>円（税抜）</p><br> <!-- 小計 -->
-  <p>￥<%= @total += ((cart.item.price*cart.item_count)*1.1).to_i %>円(税込)<p><br>
+  <p>￥<%= (@total += ((cart.item.price*cart.item_count)*1.1).to_i).to_s(:delimited) %>円(税込)<p><br>
 <% end %>
 
+<p>支払い方法</p>
+<%= @order.payment_method_i18n %>
 <p>ご請求金額</p>
-<%= @total.to_s(:delimited) %> <!-- お買い物の合計金額 -->
+<%= (@order.postage + @total).to_s(:delimited) %> <!-- お買い物の合計金額 -->
 <p>お届け先</p>
 <%= @order.address %>
 
