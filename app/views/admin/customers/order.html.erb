@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10 offset-lg-1 mb-5 ">
-      <h3>注文履歴一覧</h3>
+      <h3><%= @customer.last_name + @customer.first_name %>さんの注文履歴</h3>
     </div>
   </div>
   <div class="row">
@@ -10,7 +10,6 @@
         <thead>
           <tr class= "table-secondary">
             <th>購入日時</th>
-            <th>購入者</th>
             <th>注文個数</th>
             <th>注文ステータス</th>
           </tr>
@@ -19,7 +18,6 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
-              <td><%= link_to "#{order.customer.last_name + order.customer.first_name}",admin_customer_orders_path(order.customer.id) %></td>
               <% @item_count = 0 %>
               <%  order.order_details.each do |detail| %>
                 <%# @item_count = @item_count + detail.item_count %>

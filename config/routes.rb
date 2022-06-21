@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       resources :genres, only: [:index, :create, :edit, :update]
       #会員
       resources :customers, only: [:index, :show, :edit, :update]
+
+      get '/customers/:id/order' => 'customers#order', as: 'customer_orders'
+
       #注文
       resources :orders, only: [:index, :show, :update]
       #注文詳細
