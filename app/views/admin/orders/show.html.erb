@@ -51,9 +51,9 @@
           <% @order.order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.ordered_price.to_s(:delimited) %></td>
+              <td><%= (order_detail.ordered_price*1.1).floor.to_s(:delimited) %></td>
               <td><%= order_detail.item_count %></td>
-              <td><%= (order_detail.ordered_price*order_detail.item_count).to_s(:delimited) %></td>
+              <td><%= ((order_detail.ordered_price*order_detail.item_count)*1.1).floor.to_s(:delimited) %></td>
               <td>
                 <%= form_with model: order_detail, url:admin_order_detail_path, method: :patch do |f| %>
                   <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [k, k]}, {} %></div>
@@ -74,7 +74,7 @@
               <%  @order.order_details.each do |detail| %>
                 <% @total += detail.ordered_price*detail.item_count %>
               <% end %>
-            <%= @total.to_s(:delimited) %>円
+            <%= (@total*1.1).floor.to_s(:delimited) %>円
           </td>
         </tr>
          <tr>
@@ -83,7 +83,8 @@
         </tr>
          <tr>
           <th>請求金額合計</th>
-          <td><%= (@total + @order.postage).to_s(:delimited) %>円</td>
+          <%#= (@total + @order.postage).to_s(:delimited) %>
+          <td><%= ((@total*1.1).floor + @order.postage).to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>
