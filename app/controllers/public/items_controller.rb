@@ -10,7 +10,7 @@ class Public::ItemsController < ApplicationController
     @cart_item =CartItem.new
 
     @genres = Genre.all
-    @genre = Genre.find(params[:id])
+    #@genre = Genre.find(params[:id])
   end
 
  private
