@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="border">
+        <div class="border text-center">ジャンル検索</div>
+        <% @genres.each do |genre| %>
+          <div class="genre ml-4"><%= link_to "#{genre.name}", genre_path(genre) %></div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-7 offset-lg-1 mb-5">
+    <h3>商品一覧</h3>
+    <table>
+      <tr>
+        <% @genre.items.each do |item| %>
+          <td>
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_item_image(150,150) %><br>
+                <%= item.name %><br>
+                ￥<%= item.price %>
+              <% end %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+</div>

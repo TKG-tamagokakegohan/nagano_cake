@@ -4,7 +4,7 @@
       <div class="border">
         <div class="border text-center">ジャンル検索</div>
         <% @genres.each do |genre| %>
-          <div class="genre ml-4"><%= genre.name %></div>
+          <div class="genre ml-4"><%= link_to "#{genre.name}", genre_path(genre) %></div>
         <% end %>
       </div>
     </div>
