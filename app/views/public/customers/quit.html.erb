@@ -1,8 +1,27 @@
-<h2>本当に退会しますか？</h2>
+<div class = "container text-center">
 
-<p>退会すると、会員登録情報や<br>
-これまでの購入履歴が閲覧できなくなります。<br>
-退会する場合は、「退会する」をクリックしてください。</p>
+  <div class = "row">
+    <div class = "offset-lg-2 col-lg-6 mb-3">
+      <h4><strong>本当に退会しますか？</strong></h4>
+    </div>
+  </div>
 
-<%= link_to "退会しない", customer_path %>
-<%= link_to "退会する", out_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+  <div class = "row">
+    <div class = "offset-lg-2 col-lg-6">
+      <p class = "lead">退会すると、会員登録情報や<br>
+      これまでの購入履歴が閲覧できなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。</p>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "offset-lg-2 col-lg-6 mt-3">
+      <div class = "form-group">
+        <%= link_to "退会しない", customer_path, class: "btn btn-primary mr-3", style: "width: 30%" %>
+        <%= link_to "退会する", out_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger ml-3", style: "width: 30%" %>
+      </div>
+    </div>
+  </div>
+
+
+</div>
