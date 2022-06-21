@@ -7,6 +7,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @total = @order.billing_amount-@order.postage
   end
 
   def log
@@ -23,15 +26,12 @@ class Public::OrdersController < ApplicationController
       @order.address_name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_number] == "2"
-  # view で定義している address_number が"2"だったときにこの処理を実行します
-      if Address.exists?(address_name: params[:order][:registered])
-  # registered は viwe で定義しています
-        @order.address_name = Address.find(params[:order][:registered]).address_name
-        @order.address = Address.find(params[:order][:registered]).address
-      else
-        render :new
-  # 既存のデータを使っていますのでありえないですが、万が一データが足りない場合は new を render します
-      end
+      @address = Address.find(params[:order][:registered])
+      @order.address = @address.address
+      @order.post_code = @address.post_code
+      @order.address_name = @address.address_name
+      @order.payment_method = params[:order][:payment_method]
+
     elsif params[:order][:address_number] == "3"
   # view で定義している address_number が"3"だったときにこの処理を実行します
       address_new = current_customer.addresses.new(address_params)
@@ -90,11 +90,11 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:address_name, :postage, :billing_amount, :address, :payment_method,:post_code)
+    params.require(:order).permit(:address_name, :postage, :billing_amount, :address, :payment_method,:post_code, :post_code)
   end
 
   def address_params
-    params.require(:order).permit(:name, :address)
+    params.require(:order).permit(:post_code, :address_name, :address )
   end
 
 end

@@ -5,8 +5,6 @@ class Public::CartItemsController < ApplicationController
     # カート商品を追加・保存
     def create
         @cart_item = current_customer.cart_items.new(cart_item_params)
-        # @customer = Customer.find_by(id: params[:customer_id])
-
         # もし元々カート内に「同じ商品」がある場合、「数量を追加」更新・保存する
         #ex.バナナ２個、バナナ２個ではなく　バナナ「4個」にしたい
         if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
@@ -21,7 +19,7 @@ class Public::CartItemsController < ApplicationController
             redirect_to cart_items_path
 
         # もしカート内に「同じ」商品がない場合は通常の保存処理
-        elsif @cart_item.save!
+        elsif @cart_item.save
             # @cart_items = current_customer.cart_items.all
              redirect_to cart_items_path
         else# 保存できなかった場合
@@ -30,7 +28,8 @@ class Public::CartItemsController < ApplicationController
     end
 
     def update
-       @cart_item = current_customer.cart_items.update(cart_item_params)
+       @cart_item = CartItem.find(params[:id])
+       @cart_item.update(cart_item_params)
        redirect_to cart_items_path
     end
 
@@ -43,8 +42,8 @@ class Public::CartItemsController < ApplicationController
     end
 
     def all_destroy  #カート内全て削除
-        cart_items = CartItem.all
-        cart_items.destroy_all
+        @cart_items = CartItem.all
+        @cart_items.destroy_all
         redirect_to cart_items_path
     end
 
