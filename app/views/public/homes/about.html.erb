@@ -1,15 +1,19 @@
-
-<h1>2ページ</h1>
-
-<h1>ここにAboutが入る</h1>
-  <p>ながのCAKEは全国発送可能なケーキ屋さんです。</p>
-  <p>お子様からお年寄りの方までお召し上がりいただけるよう、</p>
-  <p>様々なバリエーションをご用意しております。</p>
-  <p>また、全国へ発送可能ですので、「いつ」でも「どこ」でもご注文いただけます。</p>
-  <p>ぜひご注文ください</p>
-
-
-
-
-
-<%=link_to "ホームページ", root_path %><br>
+<div class="container">
+  <div class-"row">
+    <div class="col-lg-8 mx-auto">
+    <h1 class="about_text">About</h1>
+      <div class="about_content">
+        <p>ながのCAKEは全国発送可能なケーキ屋さんです。</p>
+        <p>お子様からお年寄りの方までお召し上がりいただけるよう、</p>
+        <p>様々なバリエーションをご用意しております。</p>
+        <p>また、全国へ発送可能ですので、「いつ」でも「どこ」でもご注文いただけます。</p>
+        <p>ぜひご注文ください</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5 offset-lg-3 mt-4">
+      <%= image_tag "main.jpg", class: "about_image" %>
+    </div>
+  </div>
+</div>

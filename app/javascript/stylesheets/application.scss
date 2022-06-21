@@ -7,8 +7,61 @@ h3 {
   padding: 0 3%;
 }
 
+
+.main_container {
+  width: 750px;
+  height: auto;
+  position: relative;
+}
+
+.main_image {
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+.main_container p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 0;
+  margin: 0;
+}
+
+.new_item_image {
+  margin_left: 10%;
+}
+
+.new_item {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.about_text {
+  text-align: center;
+  font-weight: 800;
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.about_content {
+  text-align: center;
+  margin-bottm: 20px;
+}
+
+
+.about_image {
+  width: 450px;
+  height: auto;
+  margin_left: 20px;
+}
+
 h5 {
   background-color: #dcc6b9;
   display: inline-block;
   padding: 0 3%;
+
 
