@@ -1,26 +1,21 @@
-
-<h1>6ページ</h1>
-
-<p>ジャンル検索</p>
-
-    <%@genres = Genre.all.each do |genre| %>
-      <%= genre.name  %><br><br><br><br>
-    <%end%>
-
+<div class = "container">
+<div class = "row">
+      <div class = "col-lg-2">
           <%= image_tag @item.get_item_image(100,100) %>
+      </div>
+            <div class = "col-lg-5 offset-lg-1">
+                    <h4 class = "font-weight-bold"><%= @item.name %></h4>
+                    <p><%= @item.introduction %></p>
+                    <h4 class = "font-weight-bold" >￥<%= @item.with_tax_price%>(税込)</h4>
 
-            <h1>ショートケーキ</h1>
-              <%= @item.name %>
-              <p>￥<%= @item.with_tax_price%></p>
-
-                 <% if @item.is_active == TRUE %>
-                    <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true) do |f| %>
-                       <%= f.hidden_field :item_id, :value => @item.id%>
-                       <%= f.hidden_field :customer_id, :value => current_customer.id %>
-                       <%= f.select :item_count, *[1..10], include_blank: "個数選択" %>
-                      <%= f.submit "カートに入れる" %>
-                    <%end%>
-                <%end%>
-
-<%=link_to "ホームページ", root_path %><br>
-
+                       <% if @item.is_active == TRUE %>
+                          <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true) do |f| %>
+                             <%= f.hidden_field :item_id, :value => @item.id%>
+                             <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                             <%= f.select :item_count, *[1..10], placeholder: "個数選択" %>
+                            <%= f.submit "カートに入れる" , class: "btn btn-success" %>
+                          <%end%>
+                      <%end%>
+            </div>
+      </div>
+</div>

@@ -1,23 +1,32 @@
 <h1>16ページ</h1>
 
 <h1>注文履歴一覧</h1>
+    <% @orders.each do |order| %>
+        <p>注文日</p>
+             <%= order.created_at %>
+        <p>配送先</p>
+             〒<%= order.post_code %><br>
+             <%= order.address %><br>
+             <%= order.address_name %>
+        <p>注文商品</p>
 
-<h1>注文日</h1>
-<p>日付け</p>
+        <% order.order_details.each do |order_detail| %>
+            <%= order_detail.item.name %>
+        <%end%>
 
-<h1>配送先</h1>
-<p>郵便番号</p>
+        <p>支払い金額</p>
+         <% @total = 0 %>
+        <% order.order_details.each do |detail| %>
+            <% @total += detail.ordered_price*detail.item_count %>
+        <% end %>
+            <% @total.to_s(:delimited) %>
+        <% order.postage %>
+        <%= (@total + order.postage).to_s(:delimited) %>円
 
-<h1>注文商品</h1>
-<p>商品名</p>
+        <p>ステータス</p>
+          <%=order.order_status %>
+        <%= link_to "詳細画面へ", order_path(order) %>
+    <% end %>
 
-<h1>支払い金額</h1>
-<p>値段</p>
-
-<h1>ステータス</h1>
-<p>入金確認</p>
-
-<h1>注文詳細</h1>
-<p>表示する</p>
 
 <%=link_to "ホームページ", root_path %><br>
