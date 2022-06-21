@@ -30,10 +30,12 @@ Rails.application.routes.draw do
       #商品
       resources :items, only: [:index, :show]
       #カート内商品
-      resources :cart_items, only: [:index, :create, :update, :destroy]
-      #カート内商品をすべて削除
-      delete '/cart_items/all_destroy' => 'cart_items#all_destroy', as: 'all_destroy'
-
+      resources :cart_items, only: [:index, :create, :update, :destroy] do
+        collection do
+        #カート内商品をすべて削除
+          delete 'all_destroy'
+        end
+      end
       #注文
       post '/orders/log' => 'orders#log', as: 'log'
             #注文完了画面

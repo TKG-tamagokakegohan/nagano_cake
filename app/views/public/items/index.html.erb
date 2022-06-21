@@ -1,30 +1,26 @@
 <div class="container">
-<h1>5ページ</h1>
 
 <p>ジャンル検索</p>
-
     <%@genres = Genre.all.each do |genre| %>
       <%= genre.name  %>
     <%end%>
 
-        <!--ここから商品一覧を表示-->
+        <div class = "item_index">
+          <h3>商品一覧</h3>
+          <p>(全<%= @items.count%>件)</p>
+        </div>
 
-      <h1>商品一覧</h1>
-        <% @items.each do |item| %>
-        <%= link_to item_path(item.id) do%>
-         <%= image_tag item.get_item_image(100,100) %><br>
-         <%end%>
-        <%= item.name %><br>
-        <p>￥<%= item.price %></p><br>
-        <% end %>
+              <% @items.each do |item| %>
+              <%= link_to item_path(item.id) do%>
+               <%= image_tag item.get_item_image(100,100) %><br>
+               <%end%>
+              <%= item.name %><br>
+              <p>￥<%= item.price %></p><br>
+              <% end %>
 
-        <!--ここまで-->
-
-<h1>ここにページネーションが入る</h1>
+<%= paginate @items %>
 
 
-
-<%=link_to "ホームページ", root_path %><br>
 </div>
 
 

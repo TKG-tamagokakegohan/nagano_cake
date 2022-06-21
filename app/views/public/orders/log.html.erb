@@ -1,23 +1,54 @@
 <h1>9ページ</h1>
+<h3>注文情報確認</h3>
+<table class = "table">
+  <tr>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+  </tr>
+      <% @total = 0 %>
+     <% @cart_items.each do |cart| %>
+  <tr>
+    <td><%= cart.item.name %></td>
+    <td> <%= (cart.item.with_tax_price).to_s(:delimited) %></td>
+    <td><%= cart.item_count %></td>
+    <td><p>￥<%= (@total += ((cart.item.price*cart.item_count)*1.1).to_i).to_s(:delimited) %>円(税込)</td>
+  </tr>
+  <% end %>
+</table>
 
- <% @total = 0 %>
-<!-- ユーザーに確認してもらうための表示です -->
-<% @cart_items.each do |cart| %>
+<table class = "table">
+ <tr>
+   <th>送料</th>
+   <td><%= @order.postage %></td>
+ </tr>
 
-  <%= cart.item.name %><br> <!-- 商品名 -->
-  <%= (cart.item.price).to_s(:delimited) %><br>
-  <p>個数:<!-- 金額 -->
-  <%= cart.item_count %></p> <!-- 個数 -->
-  <p>￥<%= subtotal = (cart.item.price*cart.item_count).to_s(:delimited) %>円（税抜）</p><br> <!-- 小計 -->
-  <p>￥<%= (@total += ((cart.item.price*cart.item_count)*1.1).to_i).to_s(:delimited) %>円(税込)<p><br>
-<% end %>
+  <tr>
+   <th>商品合計</th>
+   <td><%= (@total- @order.postage).to_s(:delimited) %></td>
+ </tr>
 
-<p>支払い方法</p>
-<%= @order.payment_method_i18n %>
-<p>ご請求金額</p>
-<%= (@order.postage + @total).to_s(:delimited) %> <!-- お買い物の合計金額 -->
-<p>お届け先</p>
-<%= @order.address %>
+  <tr>
+   <th>請求金額</th>
+   <td><%= (@order.postage + @total).to_s(:delimited) %> </td>
+ </tr>
+</table>
+
+<table class = "table">
+ <tr>
+   <th>支払い方法</th>
+   <td><%= @order.payment_method_i18n %></td>
+
+   <th>お届け先</th>
+   <td>〒<%= @order.post_code + @order.address %></td>
+   <td><%= @order.address_name %></td>
+ </tr>
+</table>
+
+
+
+
 
 <!-- ユーザーには注文確定ボタンだけ表示します -->
 <%= form_with model: @order, local: true do |f| %>

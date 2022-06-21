@@ -1,5 +1,5 @@
-<h1>7ページ</h1>
 <h4>ショッピングカート</h4>
+<%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete, class: "btn btn-danger" %>
 <table>
    <tr>
     <th>商品名</th>
@@ -8,6 +8,9 @@
     <th>小計</th>
     <th></th>
    </tr>
+
+
+
      <% total = 0 %>
      <!--合計金額totalの初期化-->
 
@@ -23,7 +26,7 @@
        <td><%= (cart_item.item.price*1.1).to_i %></td>
        <td>
          <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true, method: :patch do |f| %>
-           <%= f.number_field :item_count, min: 1, max:10, id: "quantity_cart"%>
+           <%= f.number_field :item_count, min: 1, max:10%>
            <%= f.submit "変更",class: "btn btn-success" %>
            <!--セレクトboxで数量変更-->
          <% end %>
