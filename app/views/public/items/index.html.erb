@@ -1,27 +1,47 @@
 <div class="container">
-
-<p>ジャンル検索</p>
-    <%@genres = Genre.all.each do |genre| %>
-      <%= genre.name  %>
-    <%end%>
-
-        <div class = "item_index">
-          <h3>商品一覧</h3>
-          <p>(全<%= @items.count%>件)</p>
-        </div>
-
-              <% @items.each do |item| %>
-              <%= link_to item_path(item.id) do%>
-               <%= image_tag item.get_item_image(100,100) %><br>
-               <%end%>
-              <%= item.name %><br>
-              <p>￥<%= item.price %></p><br>
-              <% end %>
-
-<%= paginate @items %>
-
-
+  <div class-"row">
+    <!--<div class="col-lg-3">-->
+    <!--  <div class="border">-->
+    <!--    <div class="border text-center">ジャンル検索</div>-->
+    <!--    <%# @genres.each do |genre| %>-->
+    <!--      <div class="genre ml-4"><%#= genre.name %></div>-->
+    <!--    <%# end %>-->
+    <!--  </div>-->
+    <!--</div>-->
+      <div class = "item_index">
+        <h3>商品一覧</h3>
+        <p>(全<%= @items.count %>件)</p>
+      </div>
+      <div class ="item_container">
+        <div class="col-md-4">
+        <% @items.each do |item| %>
+          <table class="table">
+            <tr>
+              <td>
+                <% if customer_signed_in? %>
+                  <%= link_to item_path(item.id) do %>
+                      <%= image_tag item.get_item_image(150,150) %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag item.get_item_image(150,150) %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= item.name %></td>
+            </tr>
+            <tr>
+              <td>￥<%= item.price %></td>
+            </tr>
+          </table>
+        <% end %>
+        
+      </div>
+      <%= paginate @items %>
+    </div>
+  </div>
 </div>
+
 
 
 
