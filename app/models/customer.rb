@@ -25,4 +25,8 @@ class Customer < ApplicationRecord
   validates :address, presence:true
   validates :phone_number, presence:true
 
+  def is_active_color
+    is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
+  end
+
 end

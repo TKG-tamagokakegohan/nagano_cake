@@ -1,4 +1,35 @@
-<h1>16ページ</h1>
+<h3>注文履歴一覧</h3>
+
+<table class = "table">
+  <thred>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th>ステータス</th>
+      <th>注文詳細</th>
+    </tr>
+  </thred>
+
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.created_at %></td>
+      <td><%= order.address %></td>
+      <td>
+        <% order.order_details.each do |detail| %>
+         <%= detail.item.name %>
+        <% end %>
+      </td>
+      <td>支払金額</td>
+      <td><%= order.order_status %></td>
+      <td><%= link_to "表示する", order_path %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <h1>注文履歴一覧</h1>
     <% @orders.each do |order| %>
@@ -30,3 +61,4 @@
 
 
 <%=link_to "ホームページ", root_path %><br>
+

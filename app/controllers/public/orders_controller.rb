@@ -1,7 +1,9 @@
 class Public::OrdersController < ApplicationController
   def index
-    @user = current_customer
-    @orders = @user.orders
+    @items = Item.all
+    #@customer = current_customer
+    #@orders = @customer.orders
+    @orders = current_customer.orders
   end
 
   def show
