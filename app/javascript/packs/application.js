@@ -17,5 +17,3 @@ import "../stylesheets/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-"aa"
