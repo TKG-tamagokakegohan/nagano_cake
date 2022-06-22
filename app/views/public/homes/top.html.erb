@@ -18,47 +18,21 @@
       <div class="new_item_container col-lg-8 offset-lg-4">
         <h4 class="font-weight-bold text-left">新着商品</h4><br>
           <div class="new_item text-lef">
+
             <% @itemes.each do |item| %>
               <div class="new_item_image ml-3">
-                <% if customer_signed_in? %>
-                  <%= link_to item_path(item) do %>
-                    <%= image_tag item.get_item_image(150,150) %>
-                  <% end %>
-                <% else %>
+                <%= link_to item_path(item) do %>
                   <%= image_tag item.get_item_image(150,150) %>
-                <% end %><br>
+                <% end %>
                 <%= item.name %><br>
                 ￥<%= item.price %><br>
               </div>
             <% end %>
-            <%= item.name %><br>
-            ￥<%= item.price %><br>
           </div>
-        <% end %>
       </div>
     </div>
-  </div>
+
   <div class="text-right mr-5 mt-5">
     <%= link_to "全ての商品を見る >", items_path %>
   </div>
 </div>
-
-    <br>
-    <br>
-
-
-
-
-
-
-
-            <%=link_to "aboutへ", about_path %><br>
-            <%=link_to "商品一覧ページへ 5", items_path %><br>
-            <%=link_to "商品詳細ページへ まだ飛べない 6"%><br>
-            <%=link_to "注文一覧ページへ 16", orders_path %><br>
-            <%=link_to "注文履歴詳細へ 17" , log_path %><br>
-            <%=link_to "注文情報確認 9", new_order_path %><br>
-            <%=link_to "ご購入ありがとうございますへ", thanks_path %><br>
-            <%=link_to "注文履歴詳細 まだ飛べない", about_path %><br>
-            <%=link_to "注文履歴一覧へ 7", cart_items_path %><br>
-
