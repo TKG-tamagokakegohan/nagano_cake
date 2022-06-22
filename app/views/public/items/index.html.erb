@@ -1,26 +1,27 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md-3">
+          <p>ジャンル検索</p>
+              <%@genres = Genre.all.each do |genre| %>
+                <%= genre.name  %>
+              <%end%>
+    </div>
+                  <div class = "item_index">
+                    <h3>商品一覧</h3>
+                    <p>(全<%= @items.count%>件)</p>
+                  </div>
 
-<p>ジャンル検索</p>
-    <%@genres = Genre.all.each do |genre| %>
-      <%= genre.name  %>
-    <%end%>
+                        <% @items.each do |item| %>
+                        <%= link_to item_path(item.id) do%>
+                         <%= image_tag item.get_item_image(100,100) %><br>
+                         <%end%>
+                        <%= item.name %><br>
+                        <p>￥<%= item.price %></p><br>
+                        <% end %>
 
-        <div class = "item_index">
-          <h3>商品一覧</h3>
-          <p>(全<%= @items.count%>件)</p>
-        </div>
-
-              <% @items.each do |item| %>
-              <%= link_to item_path(item.id) do%>
-               <%= image_tag item.get_item_image(100,100) %><br>
-               <%end%>
-              <%= item.name %><br>
-              <p>￥<%= item.price %></p><br>
-              <% end %>
-
-<%= paginate @items %>
-
-
+          <%= paginate @items %>
+     </div>
+   </div>
 </div>
 
 

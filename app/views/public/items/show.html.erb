@@ -1,21 +1,28 @@
 <div class = "container">
-<div class = "row">
-      <div class = "col-lg-2">
-          <%= image_tag @item.get_item_image(100,100) %>
-      </div>
-            <div class = "col-lg-5 offset-lg-1">
-                    <h4 class = "font-weight-bold"><%= @item.name %></h4>
-                    <p><%= @item.introduction %></p>
-                    <h4 class = "font-weight-bold" >￥<%= @item.with_tax_price%>(税込)</h4>
+    <div class = "row">
+        <div class = "col-lg-5">
+          <%= image_tag @item.get_item_image(400,300) %>
+        </div>
 
-                       <% if @item.is_active == TRUE %>
-                          <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true) do |f| %>
-                             <%= f.hidden_field :item_id, :value => @item.id%>
-                             <%= f.hidden_field :customer_id, :value => current_customer.id %>
-                             <%= f.select :item_count, *[1..10], placeholder: "個数選択" %>
-                            <%= f.submit "カートに入れる" , class: "btn btn-success" %>
-                          <%end%>
-                      <%end%>
-            </div>
+      <div class = "col-lg-3 offset-lg-1 mt-5">
+        <h4 class = "font-weight-bold"><%= @item.name %></h4>
+        <p><%= @item.introduction %></p>
+
+              <div class ="flex-btn">
+                <h4 class = "font-weight-bold" >￥<%= @item.with_tax_price%></h4>
+                <div class = "items-price">(税込)</div>
+              </div>
+
+             <% if @item.is_active == TRUE %>
+                <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true) do |f| %>
+                   <%= f.hidden_field :item_id, :value => @item.id%>
+                   <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                  <div class ="flex-btn">
+                    <div class= "item_count-btn"><%= f.select :item_count, *[1..10], include_blank: "個数選択" %></div>
+                    <div><%= f.submit "カートに入れる" , class: "btn btn-success ml-3 mt-3" %></div>
+                  </div>
+                <%end%>
+            <%end%>
       </div>
+    </div>
 </div>

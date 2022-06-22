@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 h3 {
   background-color: #dcc6b9;
@@ -63,5 +63,97 @@ h5 {
   background-color: #dcc6b9;
   display: inline-block;
   padding: 0 3%;
+}
+
+.flex-btn{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+}
 
 
+// 商品の詳細ページ
+.item_count-btn{
+  margin-top: 20px;
+}
+
+.items-price{
+  margin-top: 5px
+}
+
+// ショッピングカート
+.cart_items-table{
+  margin-top:50px;
+}
+
+.cart_item-image{
+  width:200px;
+}
+
+.cart_items-table-th{
+   width:200px;
+}
+
+.cart_item-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart_items-table-total{
+  margin-left: 50px;
+  width: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.cart_item-footer{
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart_item-footer-center{
+  margin-left: 300px;
+}
+
+// 注文情報入力
+
+.order-new-bold{
+  font-weight: bold;
+}
+
+.order-new-label{
+  margin-left: 30px;
+}
+
+.order-new-address{
+  width: 250px;
+}
+
+.order-new-margin-left{
+  margin-left: 30px;
+}
+
+.order-new-margin-left-left{
+  margin-left: 60px;
+}
+
+.address_number-3{
+  margin-right: 20px;
+  // margin-left: 50px;
+}
+
+.address_number{
+  margin-right: 150px;
+  // margin-left: 50px;
+}
+
+.order-new-footer{
+  text-align: center;
+}
+
+.order-new-had{
+  margin-left: 40px;
+}
