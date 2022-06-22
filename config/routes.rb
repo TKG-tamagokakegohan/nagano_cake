@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'genres/show'
+  end
   #管理者用devise_controller
     devise_for :admin, skip: [:registrations, :passwords], controllers:{
     sessions: 'admin/sessions'
@@ -18,6 +21,9 @@ Rails.application.routes.draw do
       resources :genres, only: [:index, :create, :edit, :update]
       #会員
       resources :customers, only: [:index, :show, :edit, :update]
+
+      get '/customers/:id/order' => 'customers#order', as: 'customer_orders'
+
       #注文
       resources :orders, only: [:index, :show, :update]
       #注文詳細
@@ -51,6 +57,9 @@ Rails.application.routes.draw do
       patch '/customers/:id/out' => 'customers#out', as: 'out'
       #配送先
       resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+
+      resources :genres, only: [:show]
+
       #homeコントローラ(top画面about画面)
       get '/about' => 'homes#about', as: 'about'
       root to: 'homes#top'
