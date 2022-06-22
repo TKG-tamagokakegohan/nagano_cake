@@ -1,33 +1,3 @@
-<p>/p>
-
-<h2>機能一覧</h2>
-
-<h3>ユーザー機能</h3>
-<p>
-  マイページ一覧
-  商品購入
-  注文履歴の閲覧
-  カート機能
-  支払い方法
-  検索機能
-  商品
-</p>
-<h3>商品一覧</h3>
-<p>
-  商品一覧ページ
-  商品詳細ページ
-  ジャンル検索
-  注文商品　ステータス
-</p>
-<h3>管理者側</h3>
-<p>
-  ユーザー管理
-  商品登録、編集
-  制作ステータスの変更
-  ジャンル登録、編集
-  注文履歴の一覧
-</p>
-
 # <nagano_cake>
 
 ## サイト概要
@@ -41,20 +11,8 @@
 ### 主な利用シーン
 <p>ネットですぐ購入できます。</p>[
 ## 設計書
-ER図nagano_cake.pdf](https://github.com/TKG-tamagokakegohan/nagano_cake/files/8955443/ER.nagano_cake.pdf)
+ER図nagano_cake.pdf]
+(https://github.com/TKG-tamagokakegohan/nagano_cake/files/8955443/ER.nagano_cake.pdf)
 
-## 開発環境
-
-- OS：Linux(CentOS)
-
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-
-- フレームワーク：Ruby on Rails
-
-- JSライブラリ：jQuery
-
-- IDE：Cloud9
-
-## 使用素材
 
 
