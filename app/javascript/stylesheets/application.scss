@@ -1,5 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap');
+
+
+.logo {
+  font-family: 'Cherry Swash', cursive;
+  font-size: 30px;
+}
 
 h3 {
   background-color: #dcc6b9;
@@ -63,4 +70,11 @@ h5 {
   background-color: #dcc6b9;
   display: inline-block;
   padding: 0 3%;
+}
+
+.item_container {
+  display: table;
+  table-layout: fixed;
+  display: fixed;
+  flex-wrap: wrap;
 }
