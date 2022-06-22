@@ -46,36 +46,3 @@
       <% end %>
     </tbody>
   </table>
-
-
-<h1>注文履歴一覧</h1>
-    <% @orders.each do |order| %>
-        <p>注文日</p>
-             <%= order.created_at %>
-        <p>配送先</p>
-             〒<%= order.post_code %><br>
-             <%= order.address %><br>
-             <%= order.address_name %>
-        <p>注文商品</p>
-
-        <% order.order_details.each do |order_detail| %>
-            <%= order_detail.item.name %>
-        <%end%>
-
-        <p>支払い金額</p>
-         <% @total = 0 %>
-        <% order.order_details.each do |detail| %>
-            <% @total += detail.ordered_price*detail.item_count %>
-        <% end %>
-            <% @total.to_s(:delimited) %>
-        <% order.postage %>
-        <%= (@total + order.postage).to_s(:delimited) %>円
-
-        <p>ステータス</p>
-          <%=order.order_status %>
-        <%= link_to "詳細画面へ", order_path(order) %>
-    <% end %>
-
-
-<%=link_to "ホームページ", root_path %><br>
-
