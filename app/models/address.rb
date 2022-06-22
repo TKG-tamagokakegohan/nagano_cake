@@ -4,7 +4,7 @@ class Address < ApplicationRecord
 
   # 宛先
   def full_address
-    '〒' + postal_code + ' ' + address + ' ' + name
+    '〒' + post_code + ' ' + address + ' ' + address_name
   end
 
 
