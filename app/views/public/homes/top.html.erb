@@ -1,71 +1,41 @@
 <div class="container">
 
-<div class="row">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="border">
+        <div class="border text-center">ジャンル検索</div>
+        <% @genres.each do |genre| %>
+          <div class="genre ml-4"><%= link_to "#{genre.name}", genre_path(genre) %></div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-7 offset-lg-1 mb-5">
+      <div class="main_container">
+        <%= image_tag "main.jpg" , class: "main_image" %>
+        <p>ようこそ、ながのCAKEへ！</br>このサイトは、ケーキ販売のECサイトになります。</br>会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="new_item_container col-lg-8 offset-lg-4">
+        <h4 class="font-weight-bold text-left">新着商品</h4><br>
+          <div class="new_item text-lef">
 
-<div class="col-lg-3">
+            <% @itemes.each do |item| %>
+              <div class="new_item_image ml-3">
+                <%= link_to item_path(item) do %>
+                  <%= image_tag item.get_item_image(150,150) %>
+                <% end %>
+                <%= item.name %><br>
+                ￥<%= item.price %><br>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
 
-<div class="border">
-
-<div class="border text-center">ジャンル検索</div>
-
-<% @genres.each do |genre| %>
-
-<div class="genre ml-4"><%= link_to "#{genre.name}", genre_path(genre) %></div>
-
-<% end %>
-
+  <div class="text-right mr-5 mt-5">
+    <%= link_to "全ての商品を見る >", items_path %>
+  </div>
 </div>
 
-</div>
-
-<div class="col-lg-7 offset-lg-1 mb-5">
-
-<div class="main_container">
-
-<%= image_tag "main.jpg" , class: "main_image" %>
-
-<p>ようこそ、ながのCAKEへ！</br>このサイトは、ケーキ販売のECサイトになります。</br>会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。</p>
-
-</div>
-
-</div>
-
-<div class="row">
-
-<div class="new_item_container col-lg-8 offset-lg-4">
-
-<h4 class="font-weight-bold text-left">新着商品</h4><br>
-
-<div class="new_item text-lef">
-
-<% @itemes.each do |item| %>
-
-<div class="new_item_image ml-3">
-
-<%= link_to item_path(item) do %>
-
-<%= image_tag item.get_item_image(150,150) %>
-
-<% end %>
-
-<%= item.name %><br>
-
-￥<%= item.price %><br>
-
-</div>
-
-<% end %>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="text-right mr-5 mt-5">
-
-<%= link_to "全ての商品を見る >", items_path %>
-
-</div>
-
-</div>
+>>>>>>> origin/main
