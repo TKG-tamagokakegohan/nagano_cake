@@ -15,7 +15,6 @@
        <td>数量</td>
        <td>小計</td>
      </tr>
-        <% @total = 0 %>
         <% @cart_items.each do |cart| %>
      <tr>
        <th class = "align-middle">
@@ -24,7 +23,7 @@
         </th>
        <td class = "align-middle"> <%= (cart.item.with_tax_price).to_s(:delimited) %></td>
        <td class = "align-middle"><%= cart.item_count %></td>
-       <td class = "align-middle"><%= (@total += ((cart.item.price*cart.item_count)*1.1).to_i).to_s(:delimited) %></td>
+       <td class = "align-middle"><%= (((cart.item.price*cart.item_count)*1.1).to_i).to_s(:delimited) %></td>
      </tr>
      <% end %>
    </table>
@@ -39,16 +38,20 @@
 
      <tr>
       <td class = "table-secondary">商品合計</td>
-      <td><%= (@total).to_s(:delimited) %></td>
+      <%#= (@total- @order.postage).to_s(:delimited) %>
+      <% @total = 0 %>
+      <% @cart_items.each do |cart| %>
+       <% @total += cart.item.price*cart.item_count %>
+      <% end %>
+      <td><%= (@total*1.1).floor.to_s(:delimited) %></td>
     </tr>
 
      <tr>
       <td class = "table-secondary">請求金額</td>
-      <td><%= (@order.postage + @total).to_s(:delimited) %> </td>
+      <td><%= (@order.postage + (@total*1.1).floor).to_s(:delimited) %> </td>
     </tr>
    </table>
   </div>
-
 
  </div>
 
