@@ -55,9 +55,9 @@
               <td><%= order_detail.item_count %></td>
               <td><%= ((order_detail.ordered_price*order_detail.item_count)*1.1).floor.to_s(:delimited) %></td>
               <td>
-                <%= form_with model: order_detail, url:admin_order_detail_path, method: :patch do |f| %>
-                  <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [k, k]}, {} %></div>
-                <%= f.submit "更新", class: "btn btn-success ml-3" %></div>
+                <%= form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
+                  <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [k, k]}, {} %>
+                <%= f.submit "更新", class: "btn btn-success ml-3" %>
                 <% end %>
               </td>
             </tr>
