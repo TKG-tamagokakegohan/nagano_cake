@@ -18,10 +18,16 @@
     <div class="row">
       <div class="new_item_container col-lg-8 offset-lg-4">
         <h4 class="font-weight-bold text-left">新着商品</h4><br>
-          <div class="new_item pull-right">
+          <div class="new_item text-lef">
             <% @itemes.each do |item| %>
               <div class="new_item_image ml-3">
-                <%= image_tag item.get_item_image(150,150) %><br>
+                <% if customer_signed_in? %>
+                  <%= link_to item_path(item) do %>
+                    <%= image_tag item.get_item_image(150,150) %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag item.get_item_image(150,150) %>
+                <% end %><br>
                 <%= item.name %><br>
                 ￥<%= item.price %><br>
               </div>
@@ -41,7 +47,7 @@
 
 
 
-            
+
 
             <%=link_to "aboutへ", about_path %><br>
             <%=link_to "商品一覧ページへ 5", items_path %><br>
