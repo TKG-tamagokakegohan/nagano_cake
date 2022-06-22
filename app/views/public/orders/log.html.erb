@@ -15,7 +15,7 @@
        <td>数量</td>
        <td>小計</td>
      </tr>
-         <% @total = 0 %>
+        <% @total = 0 %>
         <% @cart_items.each do |cart| %>
      <tr>
        <th class = "align-middle">
@@ -39,7 +39,7 @@
 
      <tr>
       <td class = "table-secondary">商品合計</td>
-      <td><%= (@total- @order.postage).to_s(:delimited) %></td>
+      <td><%= (@total).to_s(:delimited) %></td>
     </tr>
 
      <tr>
@@ -48,6 +48,7 @@
     </tr>
    </table>
   </div>
+
 
  </div>
 
