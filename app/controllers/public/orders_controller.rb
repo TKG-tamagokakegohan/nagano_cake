@@ -54,6 +54,8 @@ class Public::OrdersController < ApplicationController
     cart_items = current_customer.cart_items.all
   # ログインユーザーのカートアイテムをすべて取り出して cart_items に入れます
     @order = current_customer.orders.new(order_params)
+    @order.order_status = 0
+
 
   # 渡ってきた値を @order に入れます
     if @order.save
@@ -67,6 +69,7 @@ class Public::OrdersController < ApplicationController
         order_detail.item_count = cart.item_count
   # 購入が完了したらカート情報は削除するのでこちらに保存します
         order_detail.ordered_price = cart.item.price
+        order_detail.making_status = 0
   # カート情報を削除するので item との紐付けが切れる前に保存します
         order_detail.save
       end

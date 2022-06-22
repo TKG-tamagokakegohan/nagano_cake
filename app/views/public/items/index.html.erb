@@ -1,5 +1,7 @@
 <div class="container">
+
   <div class-"row">
+
     <!--<div class="col-lg-3">-->
     <!--  <div class="border">-->
     <!--    <div class="border text-center">ジャンル検索</div>-->
@@ -8,40 +10,34 @@
     <!--    <%# end %>-->
     <!--  </div>-->
     <!--</div>-->
-      <div class = "item_index">
-        <h3>商品一覧</h3>
-        <p>(全<%= @items.count %>件)</p>
-      </div>
-      <div class ="item_container">
-        <div class="col-md-4">
-        <% @items.each do |item| %>
-          <table class="table">
-            <tr>
-              <td>
-                <% if customer_signed_in? %>
-                  <%= link_to item_path(item.id) do %>
-                      <%= image_tag item.get_item_image(150,150) %>
-                  <% end %>
-                <% else %>
-                  <%= image_tag item.get_item_image(150,150) %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td><%= item.name %></td>
-            </tr>
-            <tr>
-              <td>￥<%= item.price %></td>
-            </tr>
-          </table>
-        <% end %>
-        
-      </div>
-      <%= paginate @items %>
+
+  <div class = "item_index row mb-3">
+    <h3>商品一覧<span style="font-size:20px;">(全<%= @items.count %>件)</span></h3>
+  </div>
+
+  <div class = "row">
+    <div class = "col-md-10 d-flex flex-wrap" style = "width: 100%">
+      <% @items.each do |item| %>
+        <div class ="item_container px-5 py-5" style = "width: 25%">
+          <% if customer_signed_in? %>
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_item_image(150,150) %>
+            <% end %>
+          <% else %>
+            <%= image_tag item.get_item_image(150,150) %>
+          <% end %>
+          <%= item.name %><br>
+          ￥<%= item.price %>
+        </div>
+      <% end %>
     </div>
   </div>
+
+  <div class = "row">
+    <div class = "col-md-3 mx-auto">
+        <%= paginate @items %>
+    </div>
+  </div>
+
 </div>
-
-
-
 
