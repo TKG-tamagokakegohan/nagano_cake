@@ -88,6 +88,7 @@ class Public::OrdersController < ApplicationController
      # 購入情報の入力画面で、宛先や住所などを入力するところです
      @order = Order.new
      @cart_items = OrderDetail.all
+     #@addresses = current_customer.addresses
   end
 
   private
