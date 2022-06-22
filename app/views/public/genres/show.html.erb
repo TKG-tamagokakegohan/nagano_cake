@@ -8,17 +8,21 @@
         <% end %>
       </div>
     </div>
-    <div class="col-lg-7 offset-lg-1 mb-5">
-    <h3>商品一覧</h3>
+    <div class="col-lg-7 offset-lg-1">
+    <h3 class="mb-5">商品一覧</h3>
     <table>
       <tr>
         <% @genre.items.each do |item| %>
-          <td>
+          <td class="ml-3">
+            <% if customer_signed_in? %>
               <%= link_to item_path(item) do %>
                 <%= image_tag item.get_item_image(150,150) %><br>
-                <%= item.name %><br>
-                ￥<%= item.price %>
               <% end %>
+            <% else %>
+              <%= image_tag item.get_item_image(150,150) %><br>
+            <% end %>
+            <%= item.name %><br>
+            ￥<%= item.price %>
           </td>
         <% end %>
       </tr>
