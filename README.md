@@ -9,10 +9,12 @@
 ### ターゲットユーザ
 <p>甘いものが好きな人　老若男女</p>
 ### 主な利用シーン
-<p>ネットですぐ購入できます。</p>[
+<p>ネットですぐ購入できます。</p>
 ## 設計書
-ER図nagano_cake.pdf]
+<p>
+[ER図nagano_cake.pdf]
 (https://github.com/TKG-tamagokakegohan/nagano_cake/files/8955443/ER.nagano_cake.pdf)
+</p>
 
 
 
