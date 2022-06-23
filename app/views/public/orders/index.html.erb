@@ -4,7 +4,6 @@
       <h3>注文履歴一覧</h3>
     </div>
   </div>
-
   <table class = "table table-bordered table-sm">
     <thred>
       <tr class = "table-secondary">
@@ -16,7 +15,6 @@
         <th>注文詳細</th>
       </tr>
     </thred>
-
     <tbody>
       <% @orders.each do |order| %>
       <tr>
@@ -32,7 +30,7 @@
           <% end %>
         </td>
         <td class = "align-middle">
-          <%= order.billing_amount %>円
+          <%= order.billing_amount.to_s(:delimited) %>円
         </td>
         <td class = "align-middle"><%= order.order_status %></td>
         <td class = "align-middle text-center"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
@@ -40,3 +38,4 @@
       <% end %>
     </tbody>
   </table>
+</div>

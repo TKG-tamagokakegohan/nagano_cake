@@ -2,7 +2,6 @@ class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    #@addresses = current_customer.addresses
     @customer = current_customer
     @addresses = @customer.addresses
     @address = Address.new
@@ -11,14 +10,11 @@ class Public::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    #@addresses = current_customer.address
     if @address.save
       flash[:notice] = "新規配送先の保存が完了しました。"
       redirect_to addresses_path
     else
       @address = Address.new
-      #@customer = current_customer
-      #@addresses = @customer.addresses
       flash[:error] = "新規配送先の保存に失敗しました。"
       @addresses = current_customer.addresses
       render :index

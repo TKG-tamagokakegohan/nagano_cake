@@ -6,7 +6,6 @@
     </div>
   </div>
 
-  <%# 配送先登録フォーム %>
   <div class = "row">
     <div class = "col-lg-7 mb-4">
       <%= form_with model:@address do |f| %>
@@ -31,10 +30,8 @@
     </div>
   </div>
 
-  <%# 配送先一覧%>
   <div class = "row">
     <div class = "col-lg-8 mb-4">
-      <%# if @addresses.present? %>
       <table class = "table table-bordered">
 
         <thred class = "table-light">
@@ -59,9 +56,7 @@
             </tr>
           <% end %>
         </tbody>
-
       </table>
-      <%# end %>
     </div>
   </div>
 

@@ -6,8 +6,6 @@
     </div>
   </div>
 
-  <%#= form_with model: @customer, url: admin_customer_path do |f| %>
-  <%# 名前空間(namespace)が異なるコントローラを簡潔に指定する記述%>
   <%= form_with model:[:admin, @customer] do |f| %>
   <div class  = "row">
     <div class = "col-lg-10 mb-4">

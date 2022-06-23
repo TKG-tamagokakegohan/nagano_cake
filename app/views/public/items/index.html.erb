@@ -1,20 +1,9 @@
 <div class="container">
-
   <div class-"row">
-
-    <!--<div class="col-lg-3">-->
-    <!--  <div class="border">-->
-    <!--    <div class="border text-center">ジャンル検索</div>-->
-    <!--    <%# @genres.each do |genre| %>-->
-    <!--      <div class="genre ml-4"><%#= genre.name %></div>-->
-    <!--    <%# end %>-->
-    <!--  </div>-->
-    <!--</div>-->
-
-  <div class = "item_index row mb-3">
-    <h3>商品一覧<span style="font-size:20px;">(全<%= @items.count %>件)</span></h3>
+    <div class = "item_index row mb-3">
+      <h3>商品一覧<span style="font-size:20px;">(全<%= @items.count %>件)</span></h3>
+    </div>
   </div>
-
   <div class = "row">
     <div class = "col-md-10 d-flex flex-wrap" style = "width: 100%">
       <% @items.each do |item| %>
@@ -32,12 +21,10 @@
       <% end %>
     </div>
   </div>
-
   <div class = "row">
     <div class = "col-md-3 mx-auto">
         <%= paginate @items %>
     </div>
   </div>
-
 </div>
 

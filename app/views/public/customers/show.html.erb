@@ -4,7 +4,6 @@
       <h3>マイページ</h3>
     </div>
   </div>
-
   <div class = "row">
     <div class = "col-lg-7 mb-4">
       <p class = "lead font-weight-bold">
@@ -13,45 +12,36 @@
       </p>
     </div>
   </div>
-
   <div class = "row">
     <div class = " col-lg-8 mb-4">
       <table class = "table table-bordered">
-
         <tr>
           <th class = "table-active" style = "width: 30%">氏名</th>
           <th><%= @customer.last_name %><span>  </span><%= @customer.first_name %></th>
         </tr>
-
         <tr>
           <th class = "table-active">カナ</th>
           <th><%= @customer.last_name_kata %><span>  </span><%= @customer.first_name_kata %></th>
         </tr>
-
         <tr>
           <th class = "table-active">郵便番号</th>
           <th><%= @customer.post_code %></th>
         </tr>
-
         <tr>
           <th class = "table-active">住所</th>
           <th><%= @customer.address %></th>
         </tr>
-
         <tr>
           <th class = "table-active">電話番号</th>
           <th><%= @customer.phone_number %></th>
         </tr>
-
         <tr>
           <th class = "table-active">メールアドレス</th>
           <th><%= @customer.email %></th>
         </tr>
-
       </table>
     </div>
   </div>
-
   <div class = "row">
     <div class = "col-lg-7 mb-3">
       <p class = "lead font-weight-bold">
@@ -60,7 +50,6 @@
       </p>
     </div>
   </div>
-
   <div class = "row">
     <div class = "col-lg-7 mb-3">
       <p class = "lead font-weight-bold">
@@ -69,5 +58,4 @@
       </p>
     </div>
   </div>
-
 </div>

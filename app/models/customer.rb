@@ -4,19 +4,14 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #配送先
   has_many :addresses, dependent: :destroy
   has_many :cart_items
-  # 注文機能
   has_many :orders
 
-  #ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約
   def active_for_authentication?
-    #customerのis_activeがtrueならfalseを返すようにしている
     super && (self.is_active == true)
   end
 
-  #バリデーション(email,password,is_active以外)
   validates :last_name, presence:true
   validates :first_name, presence:true
   validates :last_name_kata, presence:true

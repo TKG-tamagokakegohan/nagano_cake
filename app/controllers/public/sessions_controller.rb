@@ -1,28 +1,19 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  #退会フラグ
   before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
    case resource
-   #when Admin
-    #admin_items_path
    when Customer
      root_path
    end
   end
 
   protected
-  #private?
-
-  #退会しているかを判断する
   def customer_state
-    #入力されたemailからアカウントを1件取得
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
-    #return if!@customer
     if @customer
-     #取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別 && メソッドがfalseであるかどうかを確認
      if @customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false)
       flash[:error] = "退会済みです。"
       redirect_to new_customer_session_path
