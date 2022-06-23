@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
 belongs_to :customer
-# 注文機能
 has_many :order_details
 
 

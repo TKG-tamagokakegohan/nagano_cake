@@ -29,8 +29,6 @@ class Admin::SessionsController < Devise::SessionsController
    case resource
    when Admin
     admin_orders_path
-   #when Customer
-     #root_path
    end
   end
 

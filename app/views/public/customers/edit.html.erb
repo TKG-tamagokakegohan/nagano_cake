@@ -10,8 +10,6 @@
   <div class  = "row">
     <div class = "col-lg-10 mb-3">
       <table class = "table table-borderless">
-        <%# viewspublic/registrations/new.html.erb から貼り付け %>
-
         <tr>
           <td><%= f.label :"氏名" %></td>
           <td>
@@ -19,7 +17,6 @@
             <%= f.text_field :first_name, style: "width: 35%" %>
           </td>
         </tr>
-
         <tr>
           <td><%= f.label :"フリガナ" %></td>
           <td>
@@ -27,27 +24,22 @@
             <%= f.text_field :first_name_kata, style: "width: 35%" %>
           </td>
         </tr>
-
         <tr>
           <td><%= f.label :"郵便番号", style: "width: 35%" %></td>
           <td><%= f.text_field :post_code, style: "width: 35%" %></td>
         </tr>
-
         <tr>
           <td><%= f.label :"住所" %></td>
           <td><%= f.text_field :address, style: "width: 100%" %></td>
         </tr>
-
         <tr>
           <td><%= f.label :"電話番号" %></td>
           <td><%= f.telephone_field :phone_number, style: "width: 35%" %></td>
         </tr>
-
         <tr>
           <td><%= f.label :"メールアドレス" %></td>
           <td><%= f.email_field :email, autocomplete: "email", style: "width: 35%" %></td>
         </tr>
-
         <tr>
           <td></td>
           <td>
@@ -55,10 +47,8 @@
             <%= link_to "退会する", quit_path, class: "btn btn-danger ml-4" %>
           </td>
         </tr>
-
       </table>
     </div>
   </div>
   <% end %>
-
 </div>

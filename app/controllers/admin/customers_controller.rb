@@ -18,7 +18,6 @@ before_action :authenticate_admin!
     if @customer.update(customer_params)
       flash[:notice] = "会員情報の編集が完了しました。"
       redirect_to admin_customer_path(@customer)
-      #redirect_to "/admin/customers/:id"
     else
       flash[:error] = "会員情報の編集に失敗しました。"
       render :edit

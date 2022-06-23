@@ -22,7 +22,6 @@
               <td><%= link_to "#{order.customer.last_name + order.customer.first_name}",admin_customer_orders_path(order.customer.id) %></td>
               <% @item_count = 0 %>
               <%  order.order_details.each do |detail| %>
-                <%# @item_count = @item_count + detail.item_count %>
                 <% @item_count += detail.item_count %>
               <% end %>
               <td><%= @item_count %></td>
@@ -31,5 +30,7 @@
           <% end %>
         </tbody>
       </table>
-
-    <%= paginate @orders %>
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>

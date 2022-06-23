@@ -71,7 +71,7 @@
           <th>商品合計</th>
           <td>
             <% @total = 0 %>
-              <%  @order.order_details.each do |detail| %>
+              <% @order.order_details.each do |detail| %>
                 <% @total += detail.ordered_price*detail.item_count %>
               <% end %>
             <%= (@total*1.1).floor.to_s(:delimited) %>円
@@ -83,8 +83,7 @@
         </tr>
          <tr>
           <th>請求金額合計</th>
-          <%#= (@total + @order.postage).to_s(:delimited) %>
-          <td><%= ((@total*1.1).floor + @order.postage).to_s(:delimited) %>円</td>
+          <td><%= @order.billing_amount.to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>

@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :genre
   has_many :cart_items
-  # 注文機能
   has_many :order_details
 
   has_one_attached :item_image
@@ -18,18 +17,16 @@ class Item < ApplicationRecord
     item_image.variant(resize_to_limit: [width, height]).processed
   end
 
-## 消費税を求めるメソッド
   def with_tax_price
     (price * 1.1).floor
   end
 
-## 小計を求めるメソッド
-def subtotal
-    item.with_tax_price * amount
-end
+  def subtotal
+      item.with_tax_price * amount
+  end
 
-def is_active_color
-  is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
-end
+  def is_active_color
+    is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
+  end
 
 end

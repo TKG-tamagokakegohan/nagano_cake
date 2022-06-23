@@ -8,8 +8,6 @@ class Admin::OrderDetailsController < ApplicationController
     @order_detail.update(order_detail_params)
 
     if @order_detail.making_status == "製作中"
-      #@order.order_status = "製作中"
-      #@order.save
       @order.update(order_status: "製作中")
     end
 

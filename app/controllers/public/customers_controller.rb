@@ -9,13 +9,9 @@ class Public::CustomersController < ApplicationController
   def quit
   end
 
-  #退会機能
   def out
     @customer = Customer.find(params[:id])
-    #@customer = current_custoomer
-    #is_activeカラムにフラグを立てる(defaultはtrue)
     @customer.update(is_active: false)
-    #ログアウトさせる
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
