@@ -1,11 +1,11 @@
 <div class="container">
-  
+
   <div class="row">
     <div class = "col-lg-8 mb-3">
       <h3>ショッピングカート</h3>
     </div>
     <div class = "col-lg-4 mb-3">
-      <%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete, class: "btn btn-danger" %>
+      <%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete, data:{confirm: "カートの中身を全て削除してもよろしいですか？"}, class: "btn btn-danger" %>
     </div>
   </div>
 
@@ -64,7 +64,7 @@
     <div class="col-lg-10 mt-3">
       <table class = "table table-borderless">
        <tr>
-         <td style = "width: 55%"><%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %></td>
+         <td style = "width: 55%"><%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %></td>
          <td></td>
          <td></td>
          <th  class = "table-secondary align-middle" style = "width: 15%">合計金額</th>

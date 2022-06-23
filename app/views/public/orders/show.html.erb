@@ -42,16 +42,16 @@
             <%  @order.order_details.each do |detail| %>
               <% @total += detail.ordered_price*detail.item_count %>
             <% end %>
-            <%= (@total*1.1).floor.to_s(:delimited) %>円
+            <%= (@total*1.1).floor.to_s(:delimited) %>
           </td>
         </tr>
         <tr>
           <td class = "table-secondary">配送料</td>
-          <td><%= @order.postage %>円</td>
+          <td><%= @order.postage %></td>
         </tr>
         <tr>
           <th class = "table-secondary">ご請求額</th>
-          <td><%= ((@total*1.1).floor + @order.postage).to_s(:delimited) %>円</td>
+          <td><%= ((@total*1.1).floor + @order.postage).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>

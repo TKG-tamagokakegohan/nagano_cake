@@ -13,13 +13,6 @@
   <body>
     <%= render "layouts/header" %>
     <main>
-      
-     　<div><strong>
-        サクセス・エラーメッセージ(確認用)
-        <%= flash[:notice] %>
-        <%= flash[:error] %>
-      </strong></div>
-
       <%= yield %>
     </main>
     <footer>

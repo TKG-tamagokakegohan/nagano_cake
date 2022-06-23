@@ -4,6 +4,15 @@ class Public::SessionsController < Devise::SessionsController
   #退会フラグ
   before_action :customer_state, only: [:create]
 
+  def after_sign_in_path_for(resource)
+   case resource
+   #when Admin
+    #admin_items_path
+   when Customer
+     root_path
+   end
+  end
+
   protected
   #private?
 
