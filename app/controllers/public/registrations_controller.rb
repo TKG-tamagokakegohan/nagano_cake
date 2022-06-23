@@ -62,8 +62,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
    case resource
-   #when Admin
-    #admin_items_path
    when Customer
     customer_path(current_customer)
    end
