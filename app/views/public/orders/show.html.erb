@@ -51,7 +51,7 @@
         </tr>
         <tr>
           <th class = "table-secondary">ご請求額</th>
-          <td><%= ((@total*1.1).floor + @order.postage).to_s(:delimited) %></td>
+          <td><%= @order.billing_amount %></td>
         </tr>
       </table>
     </div>

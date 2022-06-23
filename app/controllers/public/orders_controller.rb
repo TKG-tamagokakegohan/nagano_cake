@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    @total = @order.billing_amount-@order.postage
+    # @total = @order.billing_amount-@order.postage
   end
 
   def log

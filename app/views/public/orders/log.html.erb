@@ -43,12 +43,12 @@
       <% @cart_items.each do |cart| %>
        <% @total += cart.item.price*cart.item_count %>
       <% end %>
+
       <td><%= (@total*1.1).floor.to_s(:delimited) %></td>
     </tr>
-
      <tr>
       <td class = "table-secondary">請求金額</td>
-      <td><%= (@order.postage + (@total*1.1).floor).to_s(:delimited) %> </td>
+      <td><%= ( @total = @order.postage + (@total*1.1).floor).to_s(:delimited) %> </td>
     </tr>
    </table>
   </div>
