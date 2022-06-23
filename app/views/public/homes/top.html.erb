@@ -26,15 +26,16 @@
                   <%= image_tag item.get_item_image(150,150) %>
                 <% end %>
                 <%= item.name %><br>
-                ￥<%= item.price %><br>
+                ￥<%= (item.price).to_s(:delimited) %><br>
               </div>
             <% end %>
           </div>
+        <div class="text-right mr-5 mt-5">
+          <%= link_to "全ての商品を見る >", items_path %>
+        </div>
       </div>
     </div>
 
-  <div class="text-right mr-5 mt-5">
-    <%= link_to "全ての商品を見る >", items_path %>
-  </div>
+
 </div>
 
